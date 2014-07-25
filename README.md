@@ -1,4 +1,4 @@
 openAST
 =======
 
-open source AMB Simulated transponder
+open source Axx Simulated transponder
