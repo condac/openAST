@@ -1,0 +1,1 @@
+avrdude  -c avrisp -P COM8 -b 19200 -p t25 -U flash:w:openAST.hex

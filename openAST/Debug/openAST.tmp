@@ -1,0 +1,34 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.52</VERSION>
+ <DEVICE>"ATtiny25"</DEVICE>
+ <WORKING_DIR>Y:\safe\Bengt\AVR Stuff\openAST\openAST\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>D:\Program\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRAssembler\2.1.51.64\AvrAssembler/Include</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>D:\Program\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRAssembler\2.1.51.64\AvrAssembler/Include\tn25def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\Debug/openAST.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\Debug/openAST.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\Debug\openAST.map</FILE>
+  <FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\Debug\openAST.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <reset><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>30</LINE></reset>
+  <start><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>32</LINE></start>
+  <loop><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>92</LINE></loop>
+  <pre_delay><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>178</LINE></pre_delay>
+  <send_data><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>197</LINE></send_data>
+  <ledtimer><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>193</LINE></ledtimer>
+  <ledreturn><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>131</LINE></ledreturn>
+  <delay_loop><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>172</LINE></delay_loop>
+  <test><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>165</LINE></test>
+  <cycle_delay><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>183</LINE></cycle_delay>
+ </LABELS>
+</ASSEMBLER_INFO>

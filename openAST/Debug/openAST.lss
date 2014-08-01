@@ -1,0 +1,1756 @@
+
+AVRASM ver. 2.1.52  Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm Fri Aug 01 09:21:23 2014
+
+[builtin](2): Including file 'D:\Program\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRAssembler\2.1.51.64\AvrAssembler/Include\tn25def.inc'
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(11): Including file 'D:\Program\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRAssembler\2.1.51.64\AvrAssembler/Include\tn25def.inc'
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(22): warning: Register r26 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(23): warning: Register r27 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(24): warning: Register r28 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(25): warning: Register r29 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(26): warning: Register r30 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(27): warning: Register r31 already defined by the .DEF directive
+                 
+                 /*
+                 
+                 ;***** Created: 2011-02-09 12:04 ******* Source: ATtiny25.xml ************
+                 ;*************************************************************************
+                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
+                 ;* 
+                 ;* Number            : AVR000
+                 ;* File Name         : "tn25def.inc"
+                 ;* Title             : Register/Bit Definitions for the ATtiny25
+                 ;* Date              : 2011-02-09
+                 ;* Version           : 2.35
+                 ;* Support E-mail    : avr@atmel.com
+                 ;* Target MCU        : ATtiny25
+                 ;* 
+                 ;* DESCRIPTION
+                 ;* When including this file in the assembly program file, all I/O register 
+                 ;* names and I/O register bit names appearing in the data book can be used.
+                 ;* In addition, the six registers forming the three data pointers X, Y and 
+                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
+                 ;* SRAM is also defined 
+                 ;* 
+                 ;* The Register names are represented by their hexadecimal address.
+                 ;* 
+                 ;* The Register Bit names are represented by their bit number (0-7).
+                 ;* 
+                 ;* Please observe the difference in using the bit names with instructions
+                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
+                 ;* (skip if bit in register set/cleared). The following example illustrates
+                 ;* this:
+                 ;* 
+                 ;* in    r16,PORTB             ;read PORTB latch
+                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
+                 ;* out   PORTB,r16             ;output to PORTB
+                 ;* 
+                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
+                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
+                 ;* rjmp  TOV0_is_set           ;jump if set
+                 ;* ...                         ;otherwise do something else
+                 ;*************************************************************************
+                 
+                 #ifndef _TN25DEF_INC_
+                 #define _TN25DEF_INC_
+                 
+                 
+                 #pragma partinc 0
+                 
+                 ; ***** SPECIFY DEVICE ***************************************************
+                 .device ATtiny25
+                 #pragma AVRPART ADMIN PART_NAME ATtiny25
+                 .equ	SIGNATURE_000	= 0x1e
+                 .equ	SIGNATURE_001	= 0x91
+                 .equ	SIGNATURE_002	= 0x08
+                 
+                 #pragma AVRPART CORE CORE_VERSION V2
+                 #pragma AVRPART CORE NEW_INSTRUCTIONS lpm rd,z+
+                 
+                 
+                 ; ***** I/O REGISTER DEFINITIONS *****************************************
+                 ; NOTE:
+                 ; Definitions marked "MEMORY MAPPED"are extended I/O ports
+                 ; and cannot be used with IN/OUT instructions
+                 .equ	SREG	= 0x3f
+                 .equ	SPL	= 0x3d
+                 .equ	GIMSK	= 0x3b
+                 .equ	GIFR	= 0x3a
+                 .equ	TIMSK	= 0x39
+                 .equ	TIFR	= 0x38
+                 .equ	SPMCSR	= 0x37
+                 .equ	MCUCR	= 0x35
+                 .equ	MCUSR	= 0x34
+                 .equ	TCCR0B	= 0x33
+                 .equ	TCNT0	= 0x32
+                 .equ	OSCCAL	= 0x31
+                 .equ	TCCR1	= 0x30
+                 .equ	TCNT1	= 0x2f
+                 .equ	OCR1A	= 0x2e
+                 .equ	OCR1C	= 0x2d
+                 .equ	GTCCR	= 0x2c
+                 .equ	OCR1B	= 0x2b
+                 .equ	TCCR0A	= 0x2a
+                 .equ	OCR0A	= 0x29
+                 .equ	OCR0B	= 0x28
+                 .equ	PLLCSR	= 0x27
+                 .equ	CLKPR	= 0x26
+                 .equ	DT1A	= 0x25
+                 .equ	DT1B	= 0x24
+                 .equ	DTPS	= 0x23
+                 .equ	DWDR	= 0x22
+                 .equ	WDTCR	= 0x21
+                 .equ	PRR	= 0x20
+                 .equ	EEARH	= 0x1f
+                 .equ	EEARL	= 0x1e
+                 .equ	EEDR	= 0x1d
+                 .equ	EECR	= 0x1c
+                 .equ	PORTB	= 0x18
+                 .equ	DDRB	= 0x17
+                 .equ	PINB	= 0x16
+                 .equ	PCMSK	= 0x15
+                 .equ	DIDR0	= 0x14
+                 .equ	GPIOR2	= 0x13
+                 .equ	GPIOR1	= 0x12
+                 .equ	GPIOR0	= 0x11
+                 .equ	USIBR	= 0x10
+                 .equ	USIDR	= 0x0f
+                 .equ	USISR	= 0x0e
+                 .equ	USICR	= 0x0d
+                 .equ	ACSR	= 0x08
+                 .equ	ADMUX	= 0x07
+                 .equ	ADCSRA	= 0x06
+                 .equ	ADCH	= 0x05
+                 .equ	ADCL	= 0x04
+                 .equ	ADCSRB	= 0x03
+                 
+                 
+                 ; ***** BIT DEFINITIONS **************************************************
+                 
+                 ; ***** PORTB ************************
+                 ; PORTB - Data Register, Port B
+                 .equ	PORTB0	= 0	; 
+                 .equ	PB0	= 0	; For compatibility
+                 .equ	PORTB1	= 1	; 
+                 .equ	PB1	= 1	; For compatibility
+                 .equ	PORTB2	= 2	; 
+                 .equ	PB2	= 2	; For compatibility
+                 .equ	PORTB3	= 3	; 
+                 .equ	PB3	= 3	; For compatibility
+                 .equ	PORTB4	= 4	; 
+                 .equ	PB4	= 4	; For compatibility
+                 .equ	PORTB5	= 5	; 
+                 .equ	PB5	= 5	; For compatibility
+                 
+                 ; DDRB - Data Direction Register, Port B
+                 .equ	DDB0	= 0	; 
+                 .equ	DDB1	= 1	; 
+                 .equ	DDB2	= 2	; 
+                 .equ	DDB3	= 3	; 
+                 .equ	DDB4	= 4	; 
+                 .equ	DDB5	= 5	; 
+                 
+                 ; PINB - Input Pins, Port B
+                 .equ	PINB0	= 0	; 
+                 .equ	PINB1	= 1	; 
+                 .equ	PINB2	= 2	; 
+                 .equ	PINB3	= 3	; 
+                 .equ	PINB4	= 4	; 
+                 .equ	PINB5	= 5	; 
+                 
+                 
+                 ; ***** ANALOG_COMPARATOR ************
+                 ; ADCSRB - ADC Control and Status Register B
+                 .equ	ACME	= 6	; Analog Comparator Multiplexer Enable
+                 
+                 ; ACSR - Analog Comparator Control And Status Register
+                 .equ	ACIS0	= 0	; Analog Comparator Interrupt Mode Select bit 0
+                 .equ	ACIS1	= 1	; Analog Comparator Interrupt Mode Select bit 1
+                 .equ	ACIE	= 3	; Analog Comparator Interrupt Enable
+                 .equ	ACI	= 4	; Analog Comparator Interrupt Flag
+                 .equ	ACO	= 5	; Analog Compare Output
+                 .equ	ACBG	= 6	; Analog Comparator Bandgap Select
+                 .equ	AINBG	= ACBG	; For compatibility
+                 .equ	ACD	= 7	; Analog Comparator Disable
+                 
+                 ; DIDR0 - 
+                 .equ	AIN0D	= 0	; AIN0 Digital Input Disable
+                 .equ	AIN1D	= 1	; AIN1 Digital Input Disable
+                 
+                 
+                 ; ***** AD_CONVERTER *****************
+                 ; ADMUX - The ADC multiplexer Selection Register
+                 .equ	MUX0	= 0	; Analog Channel and Gain Selection Bits
+                 .equ	MUX1	= 1	; Analog Channel and Gain Selection Bits
+                 .equ	MUX2	= 2	; Analog Channel and Gain Selection Bits
+                 .equ	MUX3	= 3	; Analog Channel and Gain Selection Bits
+                 .equ	REFS2	= 4	; Reference Selection Bit 2
+                 .equ	ADLAR	= 5	; Left Adjust Result
+                 .equ	REFS0	= 6	; Reference Selection Bit 0
+                 .equ	REFS1	= 7	; Reference Selection Bit 1
+                 
+                 ; ADCSRA - The ADC Control and Status register
+                 .equ	ADPS0	= 0	; ADC  Prescaler Select Bits
+                 .equ	ADPS1	= 1	; ADC  Prescaler Select Bits
+                 .equ	ADPS2	= 2	; ADC  Prescaler Select Bits
+                 .equ	ADIE	= 3	; ADC Interrupt Enable
+                 .equ	ADIF	= 4	; ADC Interrupt Flag
+                 .equ	ADATE	= 5	; ADC Auto Trigger Enable
+                 .equ	ADSC	= 6	; ADC Start Conversion
+                 .equ	ADEN	= 7	; ADC Enable
+                 
+                 ; ADCH - ADC Data Register High Byte
+                 .equ	ADCH0	= 0	; ADC Data Register High Byte Bit 0
+                 .equ	ADCH1	= 1	; ADC Data Register High Byte Bit 1
+                 .equ	ADCH2	= 2	; ADC Data Register High Byte Bit 2
+                 .equ	ADCH3	= 3	; ADC Data Register High Byte Bit 3
+                 .equ	ADCH4	= 4	; ADC Data Register High Byte Bit 4
+                 .equ	ADCH5	= 5	; ADC Data Register High Byte Bit 5
+                 .equ	ADCH6	= 6	; ADC Data Register High Byte Bit 6
+                 .equ	ADCH7	= 7	; ADC Data Register High Byte Bit 7
+                 
+                 ; ADCL - ADC Data Register Low Byte
+                 .equ	ADCL0	= 0	; ADC Data Register Low Byte Bit 0
+                 .equ	ADCL1	= 1	; ADC Data Register Low Byte Bit 1
+                 .equ	ADCL2	= 2	; ADC Data Register Low Byte Bit 2
+                 .equ	ADCL3	= 3	; ADC Data Register Low Byte Bit 3
+                 .equ	ADCL4	= 4	; ADC Data Register Low Byte Bit 4
+                 .equ	ADCL5	= 5	; ADC Data Register Low Byte Bit 5
+                 .equ	ADCL6	= 6	; ADC Data Register Low Byte Bit 6
+                 .equ	ADCL7	= 7	; ADC Data Register Low Byte Bit 7
+                 
+                 ; ADCSRB - ADC Control and Status Register B
+                 .equ	ADTS0	= 0	; ADC Auto Trigger Source 0
+                 .equ	ADTS1	= 1	; ADC Auto Trigger Source 1
+                 .equ	ADTS2	= 2	; ADC Auto Trigger Source 2
+                 .equ	IPR	= 5	; Input Polarity Mode
+                 .equ	BIN	= 7	; Bipolar Input Mode
+                 
+                 ; DIDR0 - Digital Input Disable Register 0
+                 .equ	ADC1D	= 2	; ADC1 Digital input Disable
+                 .equ	ADC3D	= 3	; ADC3 Digital input Disable
+                 .equ	ADC2D	= 4	; ADC2 Digital input Disable
+                 .equ	ADC0D	= 5	; ADC0 Digital input Disable
+                 
+                 
+                 ; ***** USI **************************
+                 ; USIBR - USI Buffer Register
+                 .equ	USIBR0	= 0	; USI Buffer Register bit 0
+                 .equ	USIBR1	= 1	; USI Buffer Register bit 1
+                 .equ	USIBR2	= 2	; USI Buffer Register bit 2
+                 .equ	USIBR3	= 3	; USI Buffer Register bit 3
+                 .equ	USIBR4	= 4	; USI Buffer Register bit 4
+                 .equ	USIBR5	= 5	; USI Buffer Register bit 5
+                 .equ	USIBR6	= 6	; USI Buffer Register bit 6
+                 .equ	USIBR7	= 7	; USI Buffer Register bit 7
+                 
+                 ; USIDR - USI Data Register
+                 .equ	USIDR0	= 0	; USI Data Register bit 0
+                 .equ	USIDR1	= 1	; USI Data Register bit 1
+                 .equ	USIDR2	= 2	; USI Data Register bit 2
+                 .equ	USIDR3	= 3	; USI Data Register bit 3
+                 .equ	USIDR4	= 4	; USI Data Register bit 4
+                 .equ	USIDR5	= 5	; USI Data Register bit 5
+                 .equ	USIDR6	= 6	; USI Data Register bit 6
+                 .equ	USIDR7	= 7	; USI Data Register bit 7
+                 
+                 ; USISR - USI Status Register
+                 .equ	USICNT0	= 0	; USI Counter Value Bit 0
+                 .equ	USICNT1	= 1	; USI Counter Value Bit 1
+                 .equ	USICNT2	= 2	; USI Counter Value Bit 2
+                 .equ	USICNT3	= 3	; USI Counter Value Bit 3
+                 .equ	USIDC	= 4	; Data Output Collision
+                 .equ	USIPF	= 5	; Stop Condition Flag
+                 .equ	USIOIF	= 6	; Counter Overflow Interrupt Flag
+                 .equ	USISIF	= 7	; Start Condition Interrupt Flag
+                 
+                 ; USICR - USI Control Register
+                 .equ	USITC	= 0	; Toggle Clock Port Pin
+                 .equ	USICLK	= 1	; Clock Strobe
+                 .equ	USICS0	= 2	; USI Clock Source Select Bit 0
+                 .equ	USICS1	= 3	; USI Clock Source Select Bit 1
+                 .equ	USIWM0	= 4	; USI Wire Mode Bit 0
+                 .equ	USIWM1	= 5	; USI Wire Mode Bit 1
+                 .equ	USIOIE	= 6	; Counter Overflow Interrupt Enable
+                 .equ	USISIE	= 7	; Start Condition Interrupt Enable
+                 
+                 
+                 ; ***** EXTERNAL_INTERRUPT ***********
+                 ; MCUCR - MCU Control Register
+                 .equ	ISC00	= 0	; Interrupt Sense Control 0 Bit 0
+                 .equ	ISC01	= 1	; Interrupt Sense Control 0 Bit 1
+                 
+                 ; GIMSK - General Interrupt Mask Register
+                 .equ	GICR	= GIMSK	; For compatibility
+                 .equ	PCIE	= 5	; Pin Change Interrupt Enable
+                 .equ	INT0	= 6	; External Interrupt Request 0 Enable
+                 
+                 ; GIFR - General Interrupt Flag register
+                 .equ	PCIF	= 5	; Pin Change Interrupt Flag
+                 .equ	INTF0	= 6	; External Interrupt Flag 0
+                 
+                 ; PCMSK - Pin Change Enable Mask
+                 .equ	PCINT0	= 0	; Pin Change Enable Mask Bit 0
+                 .equ	PCINT1	= 1	; Pin Change Enable Mask Bit 1
+                 .equ	PCINT2	= 2	; Pin Change Enable Mask Bit 2
+                 .equ	PCINT3	= 3	; Pin Change Enable Mask Bit 3
+                 .equ	PCINT4	= 4	; Pin Change Enable Mask Bit 4
+                 .equ	PCINT5	= 5	; Pin Change Enable Mask Bit 5
+                 
+                 
+                 ; ***** EEPROM ***********************
+                 ; EEARL - EEPROM Address Register Low Byte
+                 .equ	EEAR0	= 0	; EEPROM Read/Write Access Bit 0
+                 .equ	EEAR1	= 1	; EEPROM Read/Write Access Bit 1
+                 .equ	EEAR2	= 2	; EEPROM Read/Write Access Bit 2
+                 .equ	EEAR3	= 3	; EEPROM Read/Write Access Bit 3
+                 .equ	EEAR4	= 4	; EEPROM Read/Write Access Bit 4
+                 .equ	EEAR5	= 5	; EEPROM Read/Write Access Bit 5
+                 .equ	EEAR6	= 6	; EEPROM Read/Write Access Bit 6
+                 .equ	EEAR7	= 7	; EEPROM Read/Write Access Bit 7
+                 
+                 ; EEARH - EEPROM Address Register High Byte
+                 .equ	EEAR8	= 0	; EEPROM Read/Write Access Bit 0
+                 
+                 ; EEDR - EEPROM Data Register
+                 .equ	EEDR0	= 0	; EEPROM Data Register bit 0
+                 .equ	EEDR1	= 1	; EEPROM Data Register bit 1
+                 .equ	EEDR2	= 2	; EEPROM Data Register bit 2
+                 .equ	EEDR3	= 3	; EEPROM Data Register bit 3
+                 .equ	EEDR4	= 4	; EEPROM Data Register bit 4
+                 .equ	EEDR5	= 5	; EEPROM Data Register bit 5
+                 .equ	EEDR6	= 6	; EEPROM Data Register bit 6
+                 .equ	EEDR7	= 7	; EEPROM Data Register bit 7
+                 
+                 ; EECR - EEPROM Control Register
+                 .equ	EERE	= 0	; EEPROM Read Enable
+                 .equ	EEPE	= 1	; EEPROM Write Enable
+                 .equ	EEMPE	= 2	; EEPROM Master Write Enable
+                 .equ	EERIE	= 3	; EEPROM Ready Interrupt Enable
+                 .equ	EEPM0	= 4	; EEPROM Programming Mode Bit 0
+                 .equ	EEPM1	= 5	; EEPROM Programming Mode Bit 1
+                 
+                 
+                 ; ***** WATCHDOG *********************
+                 ; WDTCR - Watchdog Timer Control Register
+                 .equ	WDTCSR	= WDTCR	; For compatibility
+                 .equ	WDP0	= 0	; Watch Dog Timer Prescaler bit 0
+                 .equ	WDP1	= 1	; Watch Dog Timer Prescaler bit 1
+                 .equ	WDP2	= 2	; Watch Dog Timer Prescaler bit 2
+                 .equ	WDE	= 3	; Watch Dog Enable
+                 .equ	WDCE	= 4	; Watchdog Change Enable
+                 .equ	WDTOE	= WDCE	; For compatibility
+                 .equ	WDP3	= 5	; Watchdog Timer Prescaler Bit 3
+                 .equ	WDIE	= 6	; Watchdog Timeout Interrupt Enable
+                 .equ	WDIF	= 7	; Watchdog Timeout Interrupt Flag
+                 
+                 
+                 ; ***** TIMER_COUNTER_0 **************
+                 ; TIMSK - Timer/Counter Interrupt Mask Register
+                 .equ	TOIE0	= 1	; Timer/Counter0 Overflow Interrupt Enable
+                 .equ	OCIE0B	= 3	; Timer/Counter0 Output Compare Match B Interrupt Enable
+                 .equ	OCIE0A	= 4	; Timer/Counter0 Output Compare Match A Interrupt Enable
+                 
+                 ; TIFR - Timer/Counter0 Interrupt Flag register
+                 .equ	TOV0	= 1	; Timer/Counter0 Overflow Flag
+                 .equ	OCF0B	= 3	; Timer/Counter0 Output Compare Flag 0B
+                 .equ	OCF0A	= 4	; Timer/Counter0 Output Compare Flag 0A
+                 
+                 ; TCCR0A - Timer/Counter  Control Register A
+                 .equ	WGM00	= 0	; Waveform Generation Mode
+                 .equ	WGM01	= 1	; Waveform Generation Mode
+                 .equ	COM0B0	= 4	; Compare Output Mode, Fast PWm
+                 .equ	COM0B1	= 5	; Compare Output Mode, Fast PWm
+                 .equ	COM0A0	= 6	; Compare Output Mode, Phase Correct PWM Mode
+                 .equ	COM0A1	= 7	; Compare Output Mode, Phase Correct PWM Mode
+                 
+                 ; TCCR0B - Timer/Counter Control Register B
+                 .equ	CS00	= 0	; Clock Select
+                 .equ	CS01	= 1	; Clock Select
+                 .equ	CS02	= 2	; Clock Select
+                 .equ	WGM02	= 3	; 
+                 .equ	FOC0B	= 6	; Force Output Compare B
+                 .equ	FOC0A	= 7	; Force Output Compare A
+                 
+                 ; TCNT0 - Timer/Counter0
+                 .equ	TCNT0_0	= 0	; 
+                 .equ	TCNT0_1	= 1	; 
+                 .equ	TCNT0_2	= 2	; 
+                 .equ	TCNT0_3	= 3	; 
+                 .equ	TCNT0_4	= 4	; 
+                 .equ	TCNT0_5	= 5	; 
+                 .equ	TCNT0_6	= 6	; 
+                 .equ	TCNT0_7	= 7	; 
+                 
+                 ; OCR0A - Timer/Counter0 Output Compare Register
+                 .equ	OCR0_0	= 0	; 
+                 .equ	OCR0_1	= 1	; 
+                 .equ	OCR0_2	= 2	; 
+                 .equ	OCR0_3	= 3	; 
+                 .equ	OCR0_4	= 4	; 
+                 .equ	OCR0_5	= 5	; 
+                 .equ	OCR0_6	= 6	; 
+                 .equ	OCR0_7	= 7	; 
+                 
+                 ; OCR0B - Timer/Counter0 Output Compare Register
+                 ;.equ	OCR0_0	= 0	; 
+                 ;.equ	OCR0_1	= 1	; 
+                 ;.equ	OCR0_2	= 2	; 
+                 ;.equ	OCR0_3	= 3	; 
+                 ;.equ	OCR0_4	= 4	; 
+                 ;.equ	OCR0_5	= 5	; 
+                 ;.equ	OCR0_6	= 6	; 
+                 ;.equ	OCR0_7	= 7	; 
+                 
+                 ; GTCCR - General Timer/Counter Control Register
+                 .equ	PSR0	= 0	; Prescaler Reset Timer/Counter1 and Timer/Counter0
+                 .equ	TSM	= 7	; Timer/Counter Synchronization Mode
+                 
+                 
+                 ; ***** TIMER_COUNTER_1 **************
+                 ; TCCR1 - Timer/Counter Control Register
+                 .equ	CS10	= 0	; Clock Select Bits
+                 .equ	CS11	= 1	; Clock Select Bits
+                 .equ	CS12	= 2	; Clock Select Bits
+                 .equ	CS13	= 3	; Clock Select Bits
+                 .equ	COM1A0	= 4	; Compare Output Mode, Bit 1
+                 .equ	COM1A1	= 5	; Compare Output Mode, Bit 0
+                 .equ	PWM1A	= 6	; Pulse Width Modulator Enable
+                 .equ	CTC1	= 7	; Clear Timer/Counter on Compare Match
+                 
+                 ; TCNT1 - Timer/Counter Register
+                 .equ	TCNT1_0	= 0	; Timer/Counter Register Bit 0
+                 .equ	TCNT1_1	= 1	; Timer/Counter Register Bit 1
+                 .equ	TCNT1_2	= 2	; Timer/Counter Register Bit 2
+                 .equ	TCNT1_3	= 3	; Timer/Counter Register Bit 3
+                 .equ	TCNT1_4	= 4	; Timer/Counter Register Bit 4
+                 .equ	TCNT1_5	= 5	; Timer/Counter Register Bit 5
+                 .equ	TCNT1_6	= 6	; Timer/Counter Register Bit 6
+                 .equ	TCNT1_7	= 7	; Timer/Counter Register Bit 7
+                 
+                 ; OCR1A - Output Compare Register
+                 .equ	OCR1A0	= 0	; Output Compare Register A Bit 0
+                 .equ	OCR1A1	= 1	; Output Compare Register A Bit 1
+                 .equ	OCR1A2	= 2	; Output Compare Register A Bit 2
+                 .equ	OCR1A3	= 3	; Output Compare Register A Bit 3
+                 .equ	OCR1A4	= 4	; Output Compare Register A Bit 4
+                 .equ	OCR1A5	= 5	; Output Compare Register A Bit 5
+                 .equ	OCR1A6	= 6	; Output Compare Register A Bit 6
+                 .equ	OCR1A7	= 7	; Output Compare Register A Bit 7
+                 
+                 ; OCR1B - Output Compare Register
+                 .equ	OCR1B0	= 0	; Output Compare Register B Bit 0
+                 .equ	OCR1B1	= 1	; Output Compare Register B Bit 1
+                 .equ	OCR1B2	= 2	; Output Compare Register B Bit 2
+                 .equ	OCR1B3	= 3	; Output Compare Register B Bit 3
+                 .equ	OCR1B4	= 4	; Output Compare Register B Bit 4
+                 .equ	OCR1B5	= 5	; Output Compare Register B Bit 5
+                 .equ	OCR1B6	= 6	; Output Compare Register B Bit 6
+                 .equ	OCR1B7	= 7	; Output Compare Register B Bit 7
+                 
+                 ; OCR1C - Output compare register
+                 .equ	OCR1C0	= 0	; 
+                 .equ	OCR1C1	= 1	; 
+                 .equ	OCR1C2	= 2	; 
+                 .equ	OCR1C3	= 3	; 
+                 .equ	OCR1C4	= 4	; 
+                 .equ	OCR1C5	= 5	; 
+                 .equ	OCR1C6	= 6	; 
+                 .equ	OCR1C7	= 7	; 
+                 
+                 ; TIMSK - Timer/Counter Interrupt Mask Register
+                 .equ	TOIE1	= 2	; Timer/Counter1 Overflow Interrupt Enable
+                 .equ	OCIE1B	= 5	; OCIE1A: Timer/Counter1 Output Compare B Interrupt Enable
+                 .equ	OCIE1A	= 6	; OCIE1A: Timer/Counter1 Output Compare Interrupt Enable
+                 
+                 ; TIFR - Timer/Counter Interrupt Flag Register
+                 .equ	TOV1	= 2	; Timer/Counter1 Overflow Flag
+                 .equ	OCF1B	= 5	; Timer/Counter1 Output Compare Flag 1B
+                 .equ	OCF1A	= 6	; Timer/Counter1 Output Compare Flag 1A
+                 
+                 ; GTCCR - Timer counter control register
+                 .equ	PSR1	= 1	; Prescaler Reset Timer/Counter1
+                 .equ	FOC1A	= 2	; Force Output Compare 1A
+                 .equ	FOC1B	= 3	; Force Output Compare Match 1B
+                 .equ	COM1B0	= 4	; Comparator B Output Mode
+                 .equ	COM1B1	= 5	; Comparator B Output Mode
+                 .equ	PWM1B	= 6	; Pulse Width Modulator B Enable
+                 
+                 ; DTPS - Dead time prescaler register
+                 .equ	DTPS0	= 0	; 
+                 .equ	DTPS1	= 1	; 
+                 
+                 ; DT1A - Dead time value register
+                 .equ	DTVL0	= 0	; 
+                 .equ	DTVL1	= 1	; 
+                 .equ	DTVL2	= 2	; 
+                 .equ	DTVL3	= 3	; 
+                 .equ	DTVH0	= 4	; 
+                 .equ	DTVH1	= 5	; 
+                 .equ	DTVH2	= 6	; 
+                 .equ	DTVH3	= 7	; 
+                 
+                 ; DT1B - Dead time value B
+                 ;.equ	DTVL0	= 0	; 
+                 ;.equ	DTVL1	= 1	; 
+                 ;.equ	DTVL2	= 2	; 
+                 ;.equ	DTVL3	= 3	; 
+                 ;.equ	DTVH0	= 4	; 
+                 ;.equ	DTVH1	= 5	; 
+                 ;.equ	DTVH2	= 6	; 
+                 ;.equ	DTVH3	= 7	; 
+                 
+                 
+                 ; ***** BOOT_LOAD ********************
+                 ; SPMCSR - Store Program Memory Control Register
+                 .equ	SPMEN	= 0	; Store Program Memory Enable
+                 .equ	PGERS	= 1	; Page Erase
+                 .equ	PGWRT	= 2	; Page Write
+                 .equ	RFLB	= 3	; Read fuse and lock bits
+                 .equ	CTPB	= 4	; Clear temporary page buffer
+                 
+                 
+                 ; ***** CPU **************************
+                 ; SREG - Status Register
+                 .equ	SREG_C	= 0	; Carry Flag
+                 .equ	SREG_Z	= 1	; Zero Flag
+                 .equ	SREG_N	= 2	; Negative Flag
+                 .equ	SREG_V	= 3	; Two's Complement Overflow Flag
+                 .equ	SREG_S	= 4	; Sign Bit
+                 .equ	SREG_H	= 5	; Half Carry Flag
+                 .equ	SREG_T	= 6	; Bit Copy Storage
+                 .equ	SREG_I	= 7	; Global Interrupt Enable
+                 
+                 ; SPL - Stack Pointer Low Byte
+                 .equ	SP0	= 0	; Stack Pointer Bit 0
+                 .equ	SP1	= 1	; Stack Pointer Bit 1
+                 .equ	SP2	= 2	; Stack Pointer Bit 2
+                 .equ	SP3	= 3	; Stack Pointer Bit 3
+                 .equ	SP4	= 4	; Stack Pointer Bit 4
+                 .equ	SP5	= 5	; Stack Pointer Bit 5
+                 .equ	SP6	= 6	; Stack Pointer Bit 6
+                 .equ	SP7	= 7	; Stack Pointer Bit 7
+                 
+                 ; MCUCR - MCU Control Register
+                 ;.equ	ISC00	= 0	; Interrupt Sense Control 0 bit 0
+                 ;.equ	ISC01	= 1	; Interrupt Sense Control 0 bit 1
+                 .equ	SM0	= 3	; Sleep Mode Select Bit 0
+                 .equ	SM1	= 4	; Sleep Mode Select Bit 1
+                 .equ	SE	= 5	; Sleep Enable
+                 .equ	PUD	= 6	; Pull-up Disable
+                 
+                 ; MCUSR - MCU Status register
+                 .equ	PORF	= 0	; Power-On Reset Flag
+                 .equ	EXTRF	= 1	; External Reset Flag
+                 .equ	BORF	= 2	; Brown-out Reset Flag
+                 .equ	WDRF	= 3	; Watchdog Reset Flag
+                 
+                 ; PRR - Power Reduction Register
+                 .equ	PRADC	= 0	; Power Reduction ADC
+                 .equ	PRUSI	= 1	; Power Reduction USI
+                 .equ	PRTIM0	= 2	; Power Reduction Timer/Counter0
+                 .equ	PRTIM1	= 3	; Power Reduction Timer/Counter1
+                 
+                 ; OSCCAL - Oscillator Calibration Register
+                 .equ	CAL0	= 0	; Oscillatro Calibration Value Bit 0
+                 .equ	CAL1	= 1	; Oscillatro Calibration Value Bit 1
+                 .equ	CAL2	= 2	; Oscillatro Calibration Value Bit 2
+                 .equ	CAL3	= 3	; Oscillatro Calibration Value Bit 3
+                 .equ	CAL4	= 4	; Oscillatro Calibration Value Bit 4
+                 .equ	CAL5	= 5	; Oscillatro Calibration Value Bit 5
+                 .equ	CAL6	= 6	; Oscillatro Calibration Value Bit 6
+                 .equ	CAL7	= 7	; Oscillatro Calibration Value Bit 7
+                 
+                 ; PLLCSR - PLL Control and status register
+                 .equ	PLOCK	= 0	; PLL Lock detector
+                 .equ	PLLE	= 1	; PLL Enable
+                 .equ	PCKE	= 2	; PCK Enable
+                 .equ	LSM	= 7	; Low speed mode
+                 
+                 ; CLKPR - Clock Prescale Register
+                 .equ	CLKPS0	= 0	; Clock Prescaler Select Bit 0
+                 .equ	CLKPS1	= 1	; Clock Prescaler Select Bit 1
+                 .equ	CLKPS2	= 2	; Clock Prescaler Select Bit 2
+                 .equ	CLKPS3	= 3	; Clock Prescaler Select Bit 3
+                 .equ	CLKPCE	= 7	; Clock Prescaler Change Enable
+                 
+                 ; DWDR - debugWire data register
+                 .equ	DWDR0	= 0	; 
+                 .equ	DWDR1	= 1	; 
+                 .equ	DWDR2	= 2	; 
+                 .equ	DWDR3	= 3	; 
+                 .equ	DWDR4	= 4	; 
+                 .equ	DWDR5	= 5	; 
+                 .equ	DWDR6	= 6	; 
+                 .equ	DWDR7	= 7	; 
+                 
+                 ; GPIOR2 - General Purpose IO register 2
+                 .equ	GPIOR20	= 0	; 
+                 .equ	GPIOR21	= 1	; 
+                 .equ	GPIOR22	= 2	; 
+                 .equ	GPIOR23	= 3	; 
+                 .equ	GPIOR24	= 4	; 
+                 .equ	GPIOR25	= 5	; 
+                 .equ	GPIOR26	= 6	; 
+                 .equ	GPIOR27	= 7	; 
+                 
+                 ; GPIOR1 - General Purpose register 1
+                 .equ	GPIOR10	= 0	; 
+                 .equ	GPIOR11	= 1	; 
+                 .equ	GPIOR12	= 2	; 
+                 .equ	GPIOR13	= 3	; 
+                 .equ	GPIOR14	= 4	; 
+                 .equ	GPIOR15	= 5	; 
+                 .equ	GPIOR16	= 6	; 
+                 .equ	GPIOR17	= 7	; 
+                 
+                 ; GPIOR0 - General purpose register 0
+                 .equ	GPIOR00	= 0	; 
+                 .equ	GPIOR01	= 1	; 
+                 .equ	GPIOR02	= 2	; 
+                 .equ	GPIOR03	= 3	; 
+                 .equ	GPIOR04	= 4	; 
+                 .equ	GPIOR05	= 5	; 
+                 .equ	GPIOR06	= 6	; 
+                 .equ	GPIOR07	= 7	; 
+                 
+                 
+                 
+                 ; ***** LOCKSBITS ********************************************************
+                 .equ	LB1	= 0	; Lockbit
+                 .equ	LB2	= 1	; Lockbit
+                 
+                 
+                 ; ***** FUSES ************************************************************
+                 ; LOW fuse bits
+                 .equ	CKSEL0	= 0	; Select Clock source
+                 .equ	CKSEL1	= 1	; Select Clock source
+                 .equ	CKSEL2	= 2	; Select Clock source
+                 .equ	CKSEL3	= 3	; Select Clock source
+                 .equ	SUT0	= 4	; Select start-up time
+                 .equ	SUT1	= 5	; Select start-up time
+                 .equ	CKOUT	= 6	; Clock Output Enable
+                 .equ	CKDIV8	= 7	; Divide clock by 8
+                 
+                 ; HIGH fuse bits
+                 .equ	BODLEVEL0	= 0	; Brown-out Detector trigger level
+                 .equ	BODLEVEL1	= 1	; Brown-out Detector trigger level
+                 .equ	BODLEVEL2	= 2	; Brown-out Detector trigger level
+                 .equ	EESAVE	= 3	; EEPROM memory is preserved through the Chip Erase
+                 .equ	WDTON	= 4	; Watchdog Timer always on
+                 .equ	SPIEN	= 5	; Enable Serial Program and Data Downloading
+                 .equ	DWEN	= 6	; DebugWIRE Enable
+                 .equ	RSTDISBL	= 7	; External Reset disable
+                 
+                 ; EXTENDED fuse bits
+                 .equ	SELFPRGEN	= 0	; Self-Programming Enable
+                 
+                 
+                 
+                 ; ***** CPU REGISTER DEFINITIONS *****************************************
+                 .def	XH	= r27
+                 .def	XL	= r26
+                 .def	YH	= r29
+                 .def	YL	= r28
+                 .def	ZH	= r31
+                 .def	ZL	= r30
+                 
+                 
+                 
+                 ; ***** DATA MEMORY DECLARATIONS *****************************************
+                 .equ	FLASHEND	= 0x03ff	; Note: Word address
+                 .equ	IOEND	= 0x003f
+                 .equ	SRAM_START	= 0x0060
+                 .equ	SRAM_SIZE	= 128
+                 .equ	RAMEND	= 0x00df
+                 .equ	XRAMEND	= 0x0000
+                 .equ	E2END	= 0x007f
+                 .equ	EEPROMEND	= 0x007f
+                 .equ	EEADRBITS	= 7
+                 #pragma AVRPART MEMORY PROG_FLASH 2048
+                 #pragma AVRPART MEMORY EEPROM 128
+                 #pragma AVRPART MEMORY INT_SRAM SIZE 128
+                 #pragma AVRPART MEMORY INT_SRAM START_ADDR 0x60
+                 
+                 
+                 
+                 ; ***** BOOTLOADER DECLARATIONS ******************************************
+                 .equ	NRWW_START_ADDR	= 0x0
+                 .equ	NRWW_STOP_ADDR	= 0x3ff
+                 .equ	RWW_START_ADDR	= 0x0
+                 .equ	RWW_STOP_ADDR	= 0x0
+                 .equ	PAGESIZE	= 16
+                 
+                 
+                 
+                 ; ***** INTERRUPT VECTORS ************************************************
+                 .equ	INT0addr	= 0x0001	; External Interrupt 0
+                 .equ	PCI0addr	= 0x0002	; Pin change Interrupt Request 0
+                 .equ	OC1Aaddr	= 0x0003	; Timer/Counter1 Compare Match 1A
+                 .equ	OVF1addr	= 0x0004	; Timer/Counter1 Overflow
+                 .equ	OVF0addr	= 0x0005	; Timer/Counter0 Overflow
+                 .equ	ERDYaddr	= 0x0006	; EEPROM Ready
+                 .equ	ACIaddr	= 0x0007	; Analog comparator
+                 .equ	ADCCaddr	= 0x0008	; ADC Conversion ready
+                 .equ	OC1Baddr	= 0x0009	; Timer/Counter1 Compare Match B
+                 .equ	OC0Aaddr	= 0x000a	; Timer/Counter0 Compare Match A
+                 .equ	OC0Baddr	= 0x000b	; Timer/Counter0 Compare Match B
+                 .equ	WDTaddr	= 0x000c	; Watchdog Time-out
+                 .equ	USI_STARTaddr	= 0x000d	; USI START
+                 .equ	USI_OVFaddr	= 0x000e	; USI Overflow
+                 
+                 .equ	INT_VECTORS_SIZE	= 15	; size in words
+                 
+                 #endif  /* _TN25DEF_INC_ */
+                 
+                 ; ***** END OF FILE ******************************************************
+                 
+                  * openAST.asm
+                  * open source AMB Simulated transponder
+                  *  Created: 2014-07-21 16:09:20
+                  *   Author: condac
+                  *
+                  *    Notes: This is the old AMB system not compatible with the new current RC4 system
+                  */ 
+                 
+                 
+                  .include "tn25def.inc" 
+                 
+                 ;***** Created: 2011-02-09 12:04 ******* Source: ATtiny25.xml ************
+                 ;*************************************************************************
+                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
+                 ;* 
+                 ;* Number            : AVR000
+                 ;* File Name         : "tn25def.inc"
+                 ;* Title             : Register/Bit Definitions for the ATtiny25
+                 ;* Date              : 2011-02-09
+                 ;* Version           : 2.35
+                 ;* Support E-mail    : avr@atmel.com
+                 ;* Target MCU        : ATtiny25
+                 ;* 
+                 ;* DESCRIPTION
+                 ;* When including this file in the assembly program file, all I/O register 
+                 ;* names and I/O register bit names appearing in the data book can be used.
+                 ;* In addition, the six registers forming the three data pointers X, Y and 
+                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
+                 ;* SRAM is also defined 
+                 ;* 
+                 ;* The Register names are represented by their hexadecimal address.
+                 ;* 
+                 ;* The Register Bit names are represented by their bit number (0-7).
+                 ;* 
+                 ;* Please observe the difference in using the bit names with instructions
+                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
+                 ;* (skip if bit in register set/cleared). The following example illustrates
+                 ;* this:
+                 ;* 
+                 ;* in    r16,PORTB             ;read PORTB latch
+                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
+                 ;* out   PORTB,r16             ;output to PORTB
+                 ;* 
+                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
+                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
+                 ;* rjmp  TOV0_is_set           ;jump if set
+                 ;* ...                         ;otherwise do something else
+                 ;*************************************************************************
+                 
+                 #ifndef _TN25DEF_INC_
+                 #endif  /* _TN25DEF_INC_ */
+                 
+                 ; ***** END OF FILE ******************************************************
+                  .def slask=r16 // slask = temp
+                  .def timerstop=r17
+                  .def timerstart=r18
+                  .def pre1=r19
+                  .def pre2=r20
+                  .def d1=r21
+                  .def d2=r22
+                  .def d3=r23
+                  .def d4=r24
+                  .def d5=r25
+                  .def d6=r26
+                  .def d7=r27
+                  .def d8=r28
+                  .def d9=r29
+                  .def d10=r30
+                  .def d11=r31
+                 
+                 
+                 reset:
+000000 c000      	rjmp start
+                 start:
+                 	//Setup timer to flip OC1A and OC1A inverted
+                 	// To take advantage of the inverted pin of the timer output we must be in PWM mode
+                 
+000001 e510      	ldi  timerstop, 0b0101_0000
+000002 e521      	ldi  timerstart, 0b0101_0001 // set COM1A0 PWM1A CS10  COM1A0 tells the timer to Toggle the value on OC1A pins (page 89 attiny25 datasheet)
+000003 bf20      	out  TCCR1,timerstart        //                       CS10 set timer prescale to 1
+                 							     //						 PWM1A enable pwm output
+                 								 // The timer needs to count to 255 before it starts to reset after 4 counts instead, don't know why
+                 
+000004 e002      	ldi  slask, 0x02 // set the counter trigger value, the value the timer will count to before toggle the timer pin
+000005 bd0e      	out  OCR1A,slask
+000006 e003      	ldi  slask, 0x03 // set the counter trigger value, the value the timer will count to before toggle the timer pin
+000007 bd0d      	out  OCR1C,slask
+                 
+000008 b708      	in slask,TIFR 
+000009 6002      	sbr slask,TOV1
+00000a bf08      	out TIFR,slask 
+                 
+00000b e007      	ldi  slask, 0x07
+00000c bb07      	out	 DDRB, slask   // PORTB => output
+                 
+                 	// Set transponder code
+                 
+00000d ef39      	ldi  pre1, 0xF9  // Header bit 1-8  // Never change
+00000e e146      	ldi  pre2, 0x16  // Header bit 9-16 // Never change
+                 
+                 	/*ldi  d1,  0xE1  // transponder id
+                 	ldi  d2,  0x3B
+                 	ldi  d3,  0xE0
+                 	ldi  d4,  0xE5
+                 	ldi  d5,  0xCA
+                 	ldi  d6,  0x3E
+                 	ldi  d7,  0x2E
+                 	ldi  d8,  0xFE
+                 	 
+                 	ldi  d9,  0x0F  // Unknown data bits after transponder id ( usaly 0 or not needed )
+                 	ldi  d10, 0x00
+                 	ldi  d11, 0x00 // End*/
+                 		
+00000f ee51      	ldi  d1,  0xE1
+000010 ec6b      	ldi  d2,  0xCB
+000011 ef7d      	ldi  d3,  0xFD
+000012 e289      	ldi  d4,  0x29
+000013 e298      	ldi  d5,  0x28
+000014 e1a3      	ldi  d6,  0x13
+000015 e1bd      	ldi  d7,  0x1d
+000016 e1c3      	ldi  d8,  0x13
+000017 e3df      	ldi  d9,  0x3f
+000018 e0e0      	ldi  d10, 0x00
+000019 e0f0      	ldi  d11, 0x00 // End
+                 	
+                 
+                 
+00001a 93f0 0159 	sts  0x0159, d11
+                 
+00001c c000      	rjmp loop
+                 	
+                 
+                 
+                 loop:
+                 	///////////////////////////////////////////////////MAIN LOOOP ///////////////////////////////////////////////////////
+                 	// start radio
+00001d bf20      	out  TCCR1,timerstart // Start radio
+                 
+00001e 0000      	nop
+                 
+                 	// wait a bit for radio to start
+00001f e300      	ldi  slask, 0b0011_0000
+000020 d028      	rcall pre_delay
+                 
+                 	// send data
+000021 d027      	rcall pre_delay
+000022 d031      	rcall send_data
+                 	//rcall pre_delay
+                 	//rcall send_data
+                 	//rcall pre_delay
+                 	//rcall send_data
+                 	// small delay and then send again
+                 	//rcall pre_delay
+                 	//rcall send_data
+                 
+                     // small delay and then send again
+                 	//rcall pre_delay
+                 	//rcall send_data
+                 
+                 	
+000023 bf10      	out  TCCR1,timerstop // Shut down radio
+000024 e400      	ldi  slask, 0b0100_0000 // set COM1A0 (bit4) to 0 to disconnect timer pins
+000025 bf00      	out  TCCR1,slask
+000026 98c0      	cbi  PORTB, 0  // set both output to 0 to avoid current drain
+000027 98c1      	cbi  PORTB, 1  // set both output to 0 to avoid current drain
+                 
+                 	
+000028 9100 0160 	lds  slask, 0x0160 // load led counter from ram
+00002a 91f0 0161 	lds  d11, 0x0161
+00002c 98c2      	cbi  PORTB, 2
+00002d 9503      	inc  slask
+00002e f119      	BREQ ledtimer
+                 ledreturn:
+00002f fdf0          SBRC d11,0 ; Skip the next instruction if bit is 0
+000030 9ac2      	sbi  PORTB, 2  // set led
+000031 0000      	nop
+000032 9300 0160 	sts  0x0160, slask
+000034 93f0 0161 	sts  0x0161, d11
+000036 91f0 0159 	lds  d11, 0x0159
+000038 94b8      	clv 
+                 
+                 	// time between each send 3ms
+000039 d00b      	rcall delay_loop
+00003a d00a      	rcall delay_loop
+00003b d009      	rcall delay_loop
+                 
+00003c d008          rcall delay_loop
+00003d d007      	rcall delay_loop
+00003e d006      	rcall delay_loop
+00003f d005      	rcall delay_loop
+                 	/*
+                     rcall delay_loop	
+                 	rcall delay_loop
+                 	rcall delay_loop
+                 	rcall delay_loop
+                 
+                     rcall delay_loop
+                 	rcall delay_loop
+                 	rcall delay_loop
+                 	rcall delay_loop
+                 	
+                     rcall delay_loop
+                 	*/
+000040 cfdc      	rjmp loop
+                 	///////////////////////////////////////////////////END  MAIN LOOOP ///////////////////////////////////////////////////////
+                 
+                 test:
+                 		// interupt timer
+000041 e500      	ldi  slask, 0b0101_0000 // stop timer
+000042 bf00      	out  TCCR1,slask
+000043 e501      	ldi  slask, 0b0101_0001 // start timer
+000044 bf00      	out  TCCR1,slask
+                 
+                 delay_loop:  // Time between each signal burst
+000045 0000         nop
+000046 950a         dec   slask       
+000047 f7e9         brne   delay_loop 
+000048 9508         ret
+                 
+                 pre_delay: // Time to spool up radio signal
+000049 950a         dec   slask       
+00004a f7f1         brne   pre_delay 
+00004b 9508         ret
+                 
+                 cycle_delay:
+                 	// When this is empty the cycle time makes it 11 cycles between each number
+                 	// to get 16 cycles we add 5 extra nop
+00004c 0000      	nop
+00004d 0000      	nop
+00004e 0000      	nop
+00004f 0000      	nop
+000050 0000      	nop
+                 
+000051 9508      	ret
+                 ledtimer: 
+000052 95f3      	inc d11
+000053 cfdb      	rjmp ledreturn
+                 
+                 send_data:
+                    	// Start header signal
+                 
+000054 fd37      	SBRC pre1,7 ; Skip the next instruction if bit is 0
+000055 bf10          out  TCCR1,timerstop// if 1
+000056 0000          nop
+000057 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000058 dff3      	rcall cycle_delay
+                 
+000059 fd36      	SBRC pre1,6 ; Skip the next instruction if bit is 0
+00005a bf10          out  TCCR1,timerstop// if 1
+00005b 0000      	nop
+00005c bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00005d dfee      	rcall cycle_delay
+                 
+00005e fd35      	SBRC pre1,5 ; Skip the next instruction if bit is 0
+00005f bf10          out  TCCR1,timerstop// if 1
+000060 0000      	nop
+000061 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000062 dfe9      	rcall cycle_delay
+                 
+000063 fd34      	SBRC pre1,4 ; Skip the next instruction if bit is 0
+000064 bf10          out  TCCR1,timerstop// if 1
+000065 0000      	nop
+000066 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000067 dfe4      	rcall cycle_delay
+                 
+000068 fd33      	SBRC pre1,3 ; Skip the next instruction if bit is 0
+000069 bf10          out  TCCR1,timerstop// if 1
+00006a 0000      	nop
+00006b bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00006c dfdf      	rcall cycle_delay
+                 
+00006d fd32      	SBRC pre1,2 ; Skip the next instruction if bit is 0
+00006e bf10          out  TCCR1,timerstop// if 1
+00006f 0000      	nop
+000070 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000071 dfda      	rcall cycle_delay
+                 
+000072 fd31      	SBRC pre1,1 ; Skip the next instruction if bit is 0
+000073 bf10          out  TCCR1,timerstop// if 1
+000074 0000      	nop
+000075 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000076 dfd5      	rcall cycle_delay
+                 
+000077 fd30      	SBRC pre1,0 ; Skip the next instruction if bit is 0
+000078 bf10          out  TCCR1,timerstop// if 1
+000079 0000      	nop
+00007a bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00007b dfd0      	rcall cycle_delay
+                 
+                 /// PRE2
+                 
+00007c fd47      	SBRC pre2,7 ; Skip the next instruction if bit is 0
+00007d bf10          out  TCCR1,timerstop// if 1
+00007e 0000      	nop
+00007f bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000080 dfcb      	rcall cycle_delay
+                 
+000081 fd46      	SBRC pre2,6 ; Skip the next instruction if bit is 0
+000082 bf10          out  TCCR1,timerstop// if 1
+000083 0000      	nop
+000084 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000085 dfc6      	rcall cycle_delay
+                 
+000086 fd45      	SBRC pre2,5 ; Skip the next instruction if bit is 0
+000087 bf10          out  TCCR1,timerstop// if 1
+000088 0000      	nop
+000089 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00008a dfc1      	rcall cycle_delay
+                 
+00008b fd44      	SBRC pre2,4 ; Skip the next instruction if bit is 0
+00008c bf10          out  TCCR1,timerstop// if 1
+00008d 0000      	nop
+00008e bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00008f dfbc      	rcall cycle_delay
+                 
+000090 fd43      	SBRC pre2,3 ; Skip the next instruction if bit is 0
+000091 bf10          out  TCCR1,timerstop// if 1
+000092 0000      	nop
+000093 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000094 dfb7      	rcall cycle_delay
+                 
+000095 fd42      	SBRC pre2,2 ; Skip the next instruction if bit is 0
+000096 bf10          out  TCCR1,timerstop// if 1
+000097 0000      	nop
+000098 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000099 dfb2      	rcall cycle_delay
+                 
+00009a fd41      	SBRC pre2,1 ; Skip the next instruction if bit is 0
+00009b bf10          out  TCCR1,timerstop// if 1
+00009c 0000      	nop
+00009d bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00009e dfad      	rcall cycle_delay
+                 
+00009f fd40      	SBRC pre2,0 ; Skip the next instruction if bit is 0
+0000a0 bf10          out  TCCR1,timerstop// if 1
+0000a1 0000      	nop
+0000a2 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000a3 dfa8      	rcall cycle_delay
+                 	
+0000a4 fd37      	SBRC pre1,7 ; Skip the next instruction if bit is 0
+0000a5 bf10          out  TCCR1,timerstop// if 1
+0000a6 0000          nop
+0000a7 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000a8 dfa3      	rcall cycle_delay
+                 
+0000a9 fd36      	SBRC pre1,6 ; Skip the next instruction if bit is 0
+0000aa bf10          out  TCCR1,timerstop// if 1
+0000ab 0000      	nop
+0000ac bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000ad df9e      	rcall cycle_delay
+                 
+0000ae fd35      	SBRC pre1,5 ; Skip the next instruction if bit is 0
+0000af bf10          out  TCCR1,timerstop// if 1
+0000b0 0000      	nop
+0000b1 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000b2 df99      	rcall cycle_delay
+                 
+0000b3 fd34      	SBRC pre1,4 ; Skip the next instruction if bit is 0
+0000b4 bf10          out  TCCR1,timerstop// if 1
+0000b5 0000      	nop
+0000b6 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000b7 df94      	rcall cycle_delay
+                 
+0000b8 fd33      	SBRC pre1,3 ; Skip the next instruction if bit is 0
+0000b9 bf10          out  TCCR1,timerstop// if 1
+0000ba 0000      	nop
+0000bb bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000bc df8f      	rcall cycle_delay
+                 
+0000bd fd32      	SBRC pre1,2 ; Skip the next instruction if bit is 0
+0000be bf10          out  TCCR1,timerstop// if 1
+0000bf 0000      	nop
+0000c0 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000c1 df8a      	rcall cycle_delay
+                 
+0000c2 fd31      	SBRC pre1,1 ; Skip the next instruction if bit is 0
+0000c3 bf10          out  TCCR1,timerstop// if 1
+0000c4 0000      	nop
+0000c5 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000c6 df85      	rcall cycle_delay
+                 
+0000c7 fd30      	SBRC pre1,0 ; Skip the next instruction if bit is 0
+0000c8 bf10          out  TCCR1,timerstop// if 1
+0000c9 0000      	nop
+0000ca bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000cb df80      	rcall cycle_delay
+                 
+                 /// PRE2
+                 
+0000cc fd47      	SBRC pre2,7 ; Skip the next instruction if bit is 0
+0000cd bf10          out  TCCR1,timerstop// if 1
+0000ce 0000      	nop
+0000cf bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000d0 df7b      	rcall cycle_delay
+                 
+0000d1 fd46      	SBRC pre2,6 ; Skip the next instruction if bit is 0
+0000d2 bf10          out  TCCR1,timerstop// if 1
+0000d3 0000      	nop
+0000d4 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000d5 df76      	rcall cycle_delay
+                 
+0000d6 fd45      	SBRC pre2,5 ; Skip the next instruction if bit is 0
+0000d7 bf10          out  TCCR1,timerstop// if 1
+0000d8 0000      	nop
+0000d9 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000da df71      	rcall cycle_delay
+                 
+0000db fd44      	SBRC pre2,4 ; Skip the next instruction if bit is 0
+0000dc bf10          out  TCCR1,timerstop// if 1
+0000dd 0000      	nop
+0000de bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000df df6c      	rcall cycle_delay
+                 
+0000e0 fd43      	SBRC pre2,3 ; Skip the next instruction if bit is 0
+0000e1 bf10          out  TCCR1,timerstop// if 1
+0000e2 0000      	nop
+0000e3 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000e4 df67      	rcall cycle_delay
+                 
+0000e5 fd42      	SBRC pre2,2 ; Skip the next instruction if bit is 0
+0000e6 bf10          out  TCCR1,timerstop// if 1
+0000e7 0000      	nop
+0000e8 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000e9 df62      	rcall cycle_delay
+                 
+0000ea fd41      	SBRC pre2,1 ; Skip the next instruction if bit is 0
+0000eb bf10          out  TCCR1,timerstop// if 1
+0000ec 0000      	nop
+0000ed bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000ee df5d      	rcall cycle_delay
+                 
+0000ef fd40      	SBRC pre2,0 ; Skip the next instruction if bit is 0
+0000f0 bf10          out  TCCR1,timerstop// if 1
+0000f1 0000      	nop
+0000f2 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000f3 df58      	rcall cycle_delay
+                 
+                  // Start Data
+                 
+                 // D1
+                 	//nop // debugtest
+                 
+0000f4 fd57      	SBRC d1,7 ; Skip the next instruction if bit is 0
+0000f5 bf10          out  TCCR1,timerstop// if 1
+0000f6 0000      	nop
+0000f7 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000f8 df53      	rcall cycle_delay
+                 
+0000f9 fd56      	SBRC d1,6 ; Skip the next instruction if bit is 0
+0000fa bf10          out  TCCR1,timerstop// if 1
+0000fb 0000      	nop
+0000fc bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0000fd df4e      	rcall cycle_delay
+                 
+0000fe fd55      	SBRC d1,5 ; Skip the next instruction if bit is 0
+0000ff bf10          out  TCCR1,timerstop// if 1
+000100 0000      	nop
+000101 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000102 df49      	rcall cycle_delay
+                 
+000103 fd54      	SBRC d1,4 ; Skip the next instruction if bit is 0
+000104 bf10          out  TCCR1,timerstop// if 1
+000105 0000      	nop
+000106 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000107 df44      	rcall cycle_delay
+                 
+000108 fd53      	SBRC d1,3 ; Skip the next instruction if bit is 0
+000109 bf10          out  TCCR1,timerstop// if 1
+00010a 0000      	nop
+00010b bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00010c df3f      	rcall cycle_delay
+                 
+00010d fd52      	SBRC d1,2 ; Skip the next instruction if bit is 0
+00010e bf10          out  TCCR1,timerstop// if 1
+00010f 0000      	nop
+000110 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000111 df3a      	rcall cycle_delay
+                 
+000112 fd51      	SBRC d1,1 ; Skip the next instruction if bit is 0
+000113 bf10          out  TCCR1,timerstop// if 1
+000114 0000      	nop
+000115 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000116 df35      	rcall cycle_delay
+                 
+000117 fd50      	SBRC d1,0 ; Skip the next instruction if bit is 0
+000118 bf10          out  TCCR1,timerstop// if 1
+000119 0000      	nop
+00011a bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00011b df30      	rcall cycle_delay
+                 	//nop
+                 
+                 	//D2
+                 
+                 	
+00011c fd67      	SBRC d2,7 ; Skip the next instruction if bit is 0
+00011d bf10          out  TCCR1,timerstop// if 1
+00011e 0000      	nop
+00011f bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000120 df2b      	rcall cycle_delay
+                 
+000121 fd66      	SBRC d2,6 ; Skip the next instruction if bit is 0
+000122 bf10          out  TCCR1,timerstop// if 1
+000123 0000      	nop
+000124 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000125 df26      	rcall cycle_delay
+                 
+000126 fd65      	SBRC d2,5 ; Skip the next instruction if bit is 0
+000127 bf10          out  TCCR1,timerstop// if 1
+000128 0000      	nop
+000129 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00012a df21      	rcall cycle_delay
+                 
+00012b fd64      	SBRC d2,4 ; Skip the next instruction if bit is 0
+00012c bf10          out  TCCR1,timerstop// if 1
+00012d 0000      	nop
+00012e bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00012f df1c      	rcall cycle_delay
+                 
+000130 fd63      	SBRC d2,3 ; Skip the next instruction if bit is 0
+000131 bf10          out  TCCR1,timerstop// if 1
+000132 0000      	nop
+000133 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000134 df17      	rcall cycle_delay
+                 
+000135 fd62      	SBRC d2,2 ; Skip the next instruction if bit is 0
+000136 bf10          out  TCCR1,timerstop// if 1
+000137 0000      	nop
+000138 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000139 df12      	rcall cycle_delay
+                 
+00013a fd61      	SBRC d2,1 ; Skip the next instruction if bit is 0
+00013b bf10          out  TCCR1,timerstop// if 1
+00013c 0000      	nop
+00013d bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00013e df0d      	rcall cycle_delay
+                 
+00013f fd60      	SBRC d2,0 ; Skip the next instruction if bit is 0
+000140 bf10          out  TCCR1,timerstop// if 1
+000141 0000      	nop
+000142 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000143 df08      	rcall cycle_delay
+                 	//nop
+                 
+                 	//D3
+                 
+                 	
+000144 fd77      	SBRC d3,7 ; Skip the next instruction if bit is 0
+000145 bf10          out  TCCR1,timerstop// if 1
+000146 0000      	nop
+000147 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000148 df03      	rcall cycle_delay
+                 
+000149 fd76      	SBRC d3,6 ; Skip the next instruction if bit is 0
+00014a bf10          out  TCCR1,timerstop// if 1
+00014b 0000      	nop
+00014c bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00014d defe      	rcall cycle_delay
+                 
+00014e fd75      	SBRC d3,5 ; Skip the next instruction if bit is 0
+00014f bf10          out  TCCR1,timerstop// if 1
+000150 0000      	nop
+000151 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000152 def9      	rcall cycle_delay
+                 	
+000153 fd74      	SBRC d3,4 ; Skip the next instruction if bit is 0
+000154 bf10          out  TCCR1,timerstop// if 1
+000155 0000      	nop
+000156 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000157 def4      	rcall cycle_delay
+                 
+000158 fd73      	SBRC d3,3 ; Skip the next instruction if bit is 0
+000159 bf10          out  TCCR1,timerstop// if 1
+00015a 0000      	nop
+00015b bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00015c deef      	rcall cycle_delay
+                 
+00015d fd72      	SBRC d3,2 ; Skip the next instruction if bit is 0
+00015e bf10          out  TCCR1,timerstop// if 1
+00015f 0000      	nop
+000160 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000161 deea      	rcall cycle_delay
+                 
+000162 fd71      	SBRC d3,1 ; Skip the next instruction if bit is 0
+000163 bf10          out  TCCR1,timerstop// if 1
+000164 0000      	nop
+000165 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000166 dee5      	rcall cycle_delay
+                 
+000167 fd70      	SBRC d3,0 ; Skip the next instruction if bit is 0
+000168 bf10          out  TCCR1,timerstop// if 1
+000169 0000      	nop
+00016a bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00016b dee0      	rcall cycle_delay
+                 	//nop
+                 
+                 	//D4
+                 
+                 	
+00016c fd87      	SBRC d4,7 ; Skip the next instruction if bit is 0
+00016d bf10          out  TCCR1,timerstop// if 1
+00016e 0000      	nop
+00016f bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000170 dedb      	rcall cycle_delay
+                 
+000171 fd86      	SBRC d4,6 ; Skip the next instruction if bit is 0
+000172 bf10          out  TCCR1,timerstop// if 1
+000173 0000      	nop
+000174 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000175 ded6      	rcall cycle_delay
+                 
+000176 fd85      	SBRC d4,5 ; Skip the next instruction if bit is 0
+000177 bf10          out  TCCR1,timerstop// if 1
+000178 0000      	nop
+000179 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00017a ded1      	rcall cycle_delay
+                 
+00017b fd84      	SBRC d4,4 ; Skip the next instruction if bit is 0
+00017c bf10          out  TCCR1,timerstop// if 1
+00017d 0000      	nop
+00017e bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00017f decc      	rcall cycle_delay
+                 
+000180 fd83      	SBRC d4,3 ; Skip the next instruction if bit is 0
+000181 bf10          out  TCCR1,timerstop// if 1
+000182 0000      	nop
+000183 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000184 dec7      	rcall cycle_delay
+                 
+000185 fd82      	SBRC d4,2 ; Skip the next instruction if bit is 0
+000186 bf10          out  TCCR1,timerstop// if 1
+000187 0000      	nop
+000188 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000189 dec2      	rcall cycle_delay
+                 
+00018a fd81      	SBRC d4,1 ; Skip the next instruction if bit is 0
+00018b bf10          out  TCCR1,timerstop// if 1
+00018c 0000      	nop
+00018d bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00018e debd      	rcall cycle_delay
+                 
+00018f fd80      	SBRC d4,0 ; Skip the next instruction if bit is 0
+000190 bf10          out  TCCR1,timerstop// if 1
+000191 0000      	nop
+000192 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000193 deb8      	rcall cycle_delay
+                 	//nop
+                 
+                 	//D5
+                 
+                 	
+000194 fd97      	SBRC d5,7 ; Skip the next instruction if bit is 0
+000195 bf10          out  TCCR1,timerstop// if 1
+000196 0000      	nop
+000197 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000198 deb3      	rcall cycle_delay
+                 
+000199 fd96      	SBRC d5,6 ; Skip the next instruction if bit is 0
+00019a bf10          out  TCCR1,timerstop// if 1
+00019b 0000      	nop
+00019c bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00019d deae      	rcall cycle_delay
+                 
+00019e fd95      	SBRC d5,5 ; Skip the next instruction if bit is 0
+00019f bf10          out  TCCR1,timerstop// if 1
+0001a0 0000      	nop
+0001a1 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001a2 dea9      	rcall cycle_delay
+                 
+0001a3 fd94      	SBRC d5,4 ; Skip the next instruction if bit is 0
+0001a4 bf10          out  TCCR1,timerstop// if 1
+0001a5 0000      	nop
+0001a6 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001a7 dea4      	rcall cycle_delay
+                 
+0001a8 fd93      	SBRC d5,3 ; Skip the next instruction if bit is 0
+0001a9 bf10          out  TCCR1,timerstop// if 1
+0001aa 0000      	nop
+0001ab bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001ac de9f      	rcall cycle_delay
+                 
+0001ad fd92      	SBRC d5,2 ; Skip the next instruction if bit is 0
+0001ae bf10          out  TCCR1,timerstop// if 1
+0001af 0000      	nop
+0001b0 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001b1 de9a      	rcall cycle_delay
+                 
+0001b2 fd91      	SBRC d5,1 ; Skip the next instruction if bit is 0
+0001b3 bf10          out  TCCR1,timerstop// if 1
+0001b4 0000      	nop
+0001b5 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001b6 de95      	rcall cycle_delay
+                 
+0001b7 fd90      	SBRC d5,0 ; Skip the next instruction if bit is 0
+0001b8 bf10          out  TCCR1,timerstop// if 1
+0001b9 0000      	nop
+0001ba bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001bb de90      	rcall cycle_delay
+                 	//nop
+                 
+                 	//D6
+                 
+                 	
+0001bc fda7      	SBRC d6,7 ; Skip the next instruction if bit is 0
+0001bd bf10          out  TCCR1,timerstop// if 1
+0001be 0000      	nop
+0001bf bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001c0 de8b      	rcall cycle_delay
+                 
+0001c1 fda6      	SBRC d6,6 ; Skip the next instruction if bit is 0
+0001c2 bf10          out  TCCR1,timerstop// if 1
+0001c3 0000      	nop
+0001c4 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001c5 de86      	rcall cycle_delay
+                 
+0001c6 fda5      	SBRC d6,5 ; Skip the next instruction if bit is 0
+0001c7 bf10          out  TCCR1,timerstop// if 1
+0001c8 0000      	nop
+0001c9 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001ca de81      	rcall cycle_delay
+                 
+0001cb fda4      	SBRC d6,4 ; Skip the next instruction if bit is 0
+0001cc bf10          out  TCCR1,timerstop// if 1
+0001cd 0000      	nop
+0001ce bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001cf de7c      	rcall cycle_delay
+                 
+0001d0 fda3      	SBRC d6,3 ; Skip the next instruction if bit is 0
+0001d1 bf10          out  TCCR1,timerstop// if 1
+0001d2 0000      	nop
+0001d3 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001d4 de77      	rcall cycle_delay
+                 
+0001d5 fda2      	SBRC d6,2 ; Skip the next instruction if bit is 0
+0001d6 bf10          out  TCCR1,timerstop// if 1
+0001d7 0000      	nop
+0001d8 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001d9 de72      	rcall cycle_delay
+                 
+0001da fda1      	SBRC d6,1 ; Skip the next instruction if bit is 0
+0001db bf10          out  TCCR1,timerstop// if 1
+0001dc 0000      	nop
+0001dd bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001de de6d      	rcall cycle_delay
+                 
+0001df fda0      	SBRC d6,0 ; Skip the next instruction if bit is 0
+0001e0 bf10          out  TCCR1,timerstop// if 1
+0001e1 0000      	nop
+0001e2 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001e3 de68      	rcall cycle_delay
+                 	//nop
+                 
+                 	//D7
+0001e4 fdb7      	SBRC d7,7 ; Skip the next instruction if bit is 0
+0001e5 bf10          out  TCCR1,timerstop// if 1
+0001e6 0000      	nop
+0001e7 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001e8 de63      	rcall cycle_delay
+                 
+0001e9 fdb6      	SBRC d7,6 ; Skip the next instruction if bit is 0
+0001ea bf10          out  TCCR1,timerstop// if 1
+0001eb 0000      	nop
+0001ec bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001ed de5e      	rcall cycle_delay
+                 
+0001ee fdb5      	SBRC d7,5 ; Skip the next instruction if bit is 0
+0001ef bf10          out  TCCR1,timerstop// if 1
+0001f0 0000      	nop
+0001f1 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001f2 de59      	rcall cycle_delay
+                 
+0001f3 fdb4      	SBRC d7,4 ; Skip the next instruction if bit is 0
+0001f4 bf10          out  TCCR1,timerstop// if 1
+0001f5 0000      	nop
+0001f6 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001f7 de54      	rcall cycle_delay
+                 
+0001f8 fdb3      	SBRC d7,3 ; Skip the next instruction if bit is 0
+0001f9 bf10          out  TCCR1,timerstop// if 1
+0001fa 0000      	nop
+0001fb bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0001fc de4f      	rcall cycle_delay
+                 
+0001fd fdb2      	SBRC d7,2 ; Skip the next instruction if bit is 0
+0001fe bf10          out  TCCR1,timerstop// if 1
+0001ff 0000      	nop
+000200 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000201 de4a      	rcall cycle_delay
+                 
+000202 fdb1      	SBRC d7,1 ; Skip the next instruction if bit is 0
+000203 bf10          out  TCCR1,timerstop// if 1
+000204 0000      	nop
+000205 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000206 de45      	rcall cycle_delay
+                 
+000207 fdb0      	SBRC d7,0 ; Skip the next instruction if bit is 0
+000208 bf10          out  TCCR1,timerstop// if 1
+000209 0000      	nop
+00020a bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00020b de40      	rcall cycle_delay
+                 	//nop
+                 
+                 	//D8
+00020c fdc7      	SBRC d8,7 ; Skip the next instruction if bit is 0
+00020d bf10          out  TCCR1,timerstop// if 1
+00020e 0000      	nop
+00020f bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000210 de3b      	rcall cycle_delay
+                 	
+000211 fdc6      	SBRC d8,6 ; Skip the next instruction if bit is 0
+000212 bf10          out  TCCR1,timerstop// if 1
+000213 0000      	nop
+000214 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000215 de36      	rcall cycle_delay
+                 
+000216 fdc5      	SBRC d8,5 ; Skip the next instruction if bit is 0
+000217 bf10          out  TCCR1,timerstop// if 1
+000218 0000      	nop
+000219 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00021a de31      	rcall cycle_delay
+                 
+00021b fdc4      	SBRC d8,4 ; Skip the next instruction if bit is 0
+00021c bf10          out  TCCR1,timerstop// if 1
+00021d 0000      	nop
+00021e bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00021f de2c      	rcall cycle_delay
+                 
+000220 fdc3      	SBRC d8,3 ; Skip the next instruction if bit is 0
+000221 bf10          out  TCCR1,timerstop// if 1
+000222 0000      	nop
+000223 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000224 de27      	rcall cycle_delay
+                 
+000225 fdc2      	SBRC d8,2 ; Skip the next instruction if bit is 0
+000226 bf10          out  TCCR1,timerstop// if 1
+000227 0000      	nop
+000228 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000229 de22      	rcall cycle_delay
+                 
+00022a fdc1      	SBRC d8,1 ; Skip the next instruction if bit is 0
+00022b bf10          out  TCCR1,timerstop// if 1
+00022c 0000      	nop
+00022d bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00022e de1d      	rcall cycle_delay
+                 
+00022f fdc0      	SBRC d8,0 ; Skip the next instruction if bit is 0
+000230 bf10          out  TCCR1,timerstop// if 1
+000231 0000      	nop
+000232 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000233 de18      	rcall cycle_delay
+                 	
+                 	//D9
+000234 fdd7      	SBRC d9,7 ; Skip the next instruction if bit is 0
+000235 bf10          out  TCCR1,timerstop// if 1
+000236 0000      	nop
+000237 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000238 de13      	rcall cycle_delay
+                 
+000239 fdd6      	SBRC d9,6 ; Skip the next instruction if bit is 0
+00023a bf10          out  TCCR1,timerstop// if 1
+00023b 0000      	nop
+00023c bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00023d de0e      	rcall cycle_delay
+                 
+00023e fdd5      	SBRC d9,5 ; Skip the next instruction if bit is 0
+00023f bf10          out  TCCR1,timerstop// if 1
+000240 0000      	nop
+000241 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000242 de09      	rcall cycle_delay
+                 
+000243 fdd4      	SBRC d9,4 ; Skip the next instruction if bit is 0
+000244 bf10          out  TCCR1,timerstop// if 1
+000245 0000      	nop
+000246 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000247 de04      	rcall cycle_delay
+                 
+000248 fdd3      	SBRC d9,3 ; Skip the next instruction if bit is 0
+000249 bf10          out  TCCR1,timerstop// if 1
+00024a 0000      	nop
+00024b bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00024c ddff      	rcall cycle_delay
+                 
+00024d fdd2      	SBRC d9,2 ; Skip the next instruction if bit is 0
+00024e bf10          out  TCCR1,timerstop// if 1
+00024f 0000      	nop
+000250 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000251 ddfa      	rcall cycle_delay
+                 
+000252 fdd1      	SBRC d9,1 ; Skip the next instruction if bit is 0
+000253 bf10          out  TCCR1,timerstop// if 1
+000254 0000      	nop
+000255 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000256 ddf5      	rcall cycle_delay
+                 
+000257 fdd0      	SBRC d9,0 ; Skip the next instruction if bit is 0
+000258 bf10          out  TCCR1,timerstop// if 1
+000259 0000      	nop
+00025a bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00025b ddf0      	rcall cycle_delay
+                 	
+                 	//D10
+00025c fde7      	SBRC d10,7 ; Skip the next instruction if bit is 0
+00025d bf10          out  TCCR1,timerstop// if 1
+00025e 0000      	nop
+00025f bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000260 ddeb      	rcall cycle_delay
+                 
+000261 fde6      	SBRC d10,6 ; Skip the next instruction if bit is 0
+000262 bf10          out  TCCR1,timerstop// if 1
+000263 0000      	nop
+000264 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000265 dde6      	rcall cycle_delay
+                 
+000266 fde5      	SBRC d10,5 ; Skip the next instruction if bit is 0
+000267 bf10          out  TCCR1,timerstop// if 1
+000268 0000      	nop
+000269 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00026a dde1      	rcall cycle_delay
+                 
+00026b fde4      	SBRC d10,4 ; Skip the next instruction if bit is 0
+00026c bf10          out  TCCR1,timerstop// if 1
+00026d 0000      	nop
+00026e bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00026f dddc      	rcall cycle_delay
+                 
+000270 fde3      	SBRC d10,3 ; Skip the next instruction if bit is 0
+000271 bf10          out  TCCR1,timerstop// if 1
+000272 0000      	nop
+000273 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000274 ddd7      	rcall cycle_delay
+                 
+000275 fde2      	SBRC d10,2 ; Skip the next instruction if bit is 0
+000276 bf10          out  TCCR1,timerstop// if 1
+000277 0000      	nop
+000278 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000279 ddd2      	rcall cycle_delay
+                 
+00027a fde1      	SBRC d10,1 ; Skip the next instruction if bit is 0
+00027b bf10          out  TCCR1,timerstop// if 1
+00027c 0000      	nop
+00027d bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00027e ddcd      	rcall cycle_delay
+                 
+00027f fde0      	SBRC d10,0 ; Skip the next instruction if bit is 0
+000280 bf10          out  TCCR1,timerstop// if 1
+000281 0000      	nop
+000282 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000283 ddc8      	rcall cycle_delay
+                 
+                 	//D11
+000284 fdf7      	SBRC d11,7 ; Skip the next instruction if bit is 0
+000285 bf10          out  TCCR1,timerstop// if 1
+000286 0000      	nop
+000287 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000288 ddc3      	rcall cycle_delay
+                 
+000289 fdf6      	SBRC d11,6 ; Skip the next instruction if bit is 0
+00028a bf10          out  TCCR1,timerstop// if 1
+00028b 0000      	nop
+00028c bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00028d ddbe      	rcall cycle_delay
+                 
+00028e fdf5      	SBRC d11,5 ; Skip the next instruction if bit is 0
+00028f bf10          out  TCCR1,timerstop// if 1
+000290 0000      	nop
+000291 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000292 ddb9      	rcall cycle_delay
+                 
+000293 fdf4      	SBRC d11,4 ; Skip the next instruction if bit is 0
+000294 bf10          out  TCCR1,timerstop// if 1
+000295 0000      	nop
+000296 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+000297 ddb4      	rcall cycle_delay
+                 
+000298 fdf3      	SBRC d11,3 ; Skip the next instruction if bit is 0
+000299 bf10          out  TCCR1,timerstop// if 1
+00029a 0000      	nop
+00029b bf20      	out  TCCR1,timerstart// if 0 and after if 1
+00029c ddaf      	rcall cycle_delay
+                 
+00029d fdf2      	SBRC d11,2 ; Skip the next instruction if bit is 0
+00029e bf10          out  TCCR1,timerstop// if 1
+00029f 0000      	nop
+0002a0 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0002a1 ddaa      	rcall cycle_delay
+                 
+0002a2 fdf1      	SBRC d11,1 ; Skip the next instruction if bit is 0
+0002a3 bf10          out  TCCR1,timerstop// if 1
+0002a4 0000      	nop
+0002a5 bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0002a6 dda5      	rcall cycle_delay
+                 
+0002a7 fdf0      	SBRC d11,0 ; Skip the next instruction if bit is 0
+0002a8 bf10          out  TCCR1,timerstop// if 1
+0002a9 0000      	nop
+0002aa bf20      	out  TCCR1,timerstart// if 0 and after if 1
+0002ab dda0      	rcall cycle_delay
+                 	
+
+
+RESOURCE USE INFORMATION
+------------------------
+
+Notice:
+The register and instruction counts are symbol table hit counts,
+and hence implicitly used resources are not counted, eg, the
+'lpm' instruction without operands implicitly uses r0 and z,
+none of which are counted.
+
+x,y,z are separate entities in the symbol table and are
+counted separately from r26..r31 here.
+
+.dseg memory usage only counts static data declared with .byte
+
+"ATtiny25" register use summary:
+r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 r5 :   0 r6 :   0 r7 :   0 
+r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 r13:   0 r14:   0 r15:   0 
+r16:  21 r17: 122 r18: 123 r19:  17 r20:  17 r21:   9 r22:   9 r23:   9 
+r24:   9 r25:   9 r26:   9 r27:   9 r28:   9 r29:   9 r30:   9 r31:  15 
+x  :   0 y  :   0 z  :   0 
+Registers used: 16 out of 35 (45.7%)
+
+"ATtiny25" instruction use summary:
+.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
+andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   1 brge  :   0 brhc  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
+brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 cbi   :   3 cbr   :   0 clc   :   0 
+clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 clt   :   0 
+clv   :   1 clz   :   0 com   :   0 cp    :   0 cpc   :   0 cpi   :   0 
+cpse  :   0 dec   :   2 eor   :   0 icall :   0 ijmp  :   0 in    :   1 
+inc   :   2 ld    :   0 ldd   :   0 ldi   :  22 lds   :   3 lpm   :   0 
+lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 neg   :   0 nop   : 128 
+or    :   0 ori   :   0 out   : 250 pop   :   0 push  :   0 rcall : 130 
+ret   :   4 reti  :   0 rjmp  :   4 rol   :   0 ror   :   0 sbc   :   0 
+sbci  :   0 sbi   :   1 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   1 
+sbrc  : 121 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 
+ser   :   0 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 
+spm   :   0 st    :   0 std   :   0 sts   :   3 sub   :   0 subi  :   0 
+swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 18 out of 105 (17.1%)
+
+"ATtiny25" memory use summary [bytes]:
+Segment   Begin    End      Code   Data   Used    Size   Use%
+---------------------------------------------------------------
+[.cseg] 0x000000 0x00055a   1370      0   1370    2048  66.9%
+[.dseg] 0x000060 0x000060      0      0      0     128   0.0%
+[.eseg] 0x000000 0x000000      0      0      0     128   0.0%
+
+Assembly complete, 0 errors, 6 warnings
