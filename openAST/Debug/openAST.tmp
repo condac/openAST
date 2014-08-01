@@ -20,15 +20,15 @@
   <FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\Debug\openAST.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <reset><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>30</LINE></reset>
-  <start><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>32</LINE></start>
-  <loop><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>92</LINE></loop>
-  <pre_delay><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>178</LINE></pre_delay>
-  <send_data><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>197</LINE></send_data>
-  <ledtimer><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>193</LINE></ledtimer>
-  <ledreturn><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>131</LINE></ledreturn>
-  <delay_loop><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>172</LINE></delay_loop>
-  <test><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>165</LINE></test>
-  <cycle_delay><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>183</LINE></cycle_delay>
+  <reset><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>46</LINE></reset>
+  <start><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>48</LINE></start>
+  <loop><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>95</LINE></loop>
+  <pre_delay><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>181</LINE></pre_delay>
+  <send_data><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>200</LINE></send_data>
+  <ledtimer><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>196</LINE></ledtimer>
+  <ledreturn><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>134</LINE></ledreturn>
+  <delay_loop><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>175</LINE></delay_loop>
+  <test><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>168</LINE></test>
+  <cycle_delay><FILE>Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm</FILE><LINE>186</LINE></cycle_delay>
  </LABELS>
 </ASSEMBLER_INFO>

@@ -1,14 +1,14 @@
 
-AVRASM ver. 2.1.52  Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm Fri Aug 01 09:21:23 2014
+AVRASM ver. 2.1.52  Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm Fri Aug 01 09:29:53 2014
 
 [builtin](2): Including file 'D:\Program\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRAssembler\2.1.51.64\AvrAssembler/Include\tn25def.inc'
-Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(11): Including file 'D:\Program\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRAssembler\2.1.51.64\AvrAssembler/Include\tn25def.inc'
-Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(22): warning: Register r26 already defined by the .DEF directive
-Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(23): warning: Register r27 already defined by the .DEF directive
-Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(24): warning: Register r28 already defined by the .DEF directive
-Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(25): warning: Register r29 already defined by the .DEF directive
-Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(26): warning: Register r30 already defined by the .DEF directive
-Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(27): warning: Register r31 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(27): Including file 'D:\Program\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRAssembler\2.1.51.64\AvrAssembler/Include\tn25def.inc'
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(38): warning: Register r26 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(39): warning: Register r27 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(40): warning: Register r28 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(41): warning: Register r29 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(42): warning: Register r30 already defined by the .DEF directive
+Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(43): warning: Register r31 already defined by the .DEF directive
                  
                  /*
                  
@@ -710,6 +710,22 @@ Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(27): warning: Register r31 a
                   *   Author: condac
                   *
                   *    Notes: This is the old AMB system not compatible with the new current RC4 system
+                 
+                  Copyright (C) 2014  condac
+                 
+                 This program is free software; you can redistribute it and/or
+                 modify it under the terms of the GNU General Public License
+                 as published by the Free Software Foundation; either version 2
+                 of the License, or (at your option) any later version.
+                 
+                 This program is distributed in the hope that it will be useful,
+                 but WITHOUT ANY WARRANTY; without even the implied warranty of
+                 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                 GNU General Public License for more details.
+                 
+                 You should have received a copy of the GNU General Public License
+                 along with this program; if not, write to the Free Software
+                 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                   */ 
                  
                  
@@ -803,19 +819,6 @@ Y:\safe\Bengt\AVR Stuff\openAST\openAST\openAST.asm(27): warning: Register r31 a
                  
 00000d ef39      	ldi  pre1, 0xF9  // Header bit 1-8  // Never change
 00000e e146      	ldi  pre2, 0x16  // Header bit 9-16 // Never change
-                 
-                 	/*ldi  d1,  0xE1  // transponder id
-                 	ldi  d2,  0x3B
-                 	ldi  d3,  0xE0
-                 	ldi  d4,  0xE5
-                 	ldi  d5,  0xCA
-                 	ldi  d6,  0x3E
-                 	ldi  d7,  0x2E
-                 	ldi  d8,  0xFE
-                 	 
-                 	ldi  d9,  0x0F  // Unknown data bits after transponder id ( usaly 0 or not needed )
-                 	ldi  d10, 0x00
-                 	ldi  d11, 0x00 // End*/
                  		
 00000f ee51      	ldi  d1,  0xE1
 000010 ec6b      	ldi  d2,  0xCB
