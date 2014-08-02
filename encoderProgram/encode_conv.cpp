@@ -1,7 +1,7 @@
 /*
  * Program to Decode and encode old transponder format for rc cars
  * 
-  Copyright (C) 2014  OM2KW 
+  Copyright (C) 2014  Brano
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
