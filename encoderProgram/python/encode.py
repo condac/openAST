@@ -39,6 +39,8 @@ slask = ""
 
 ghost = ""
 
+ghost = decode[ifhead+0]+ghost
+
 slask = decode[ifhead+1]+slask
 slask = decode[ifhead+2]+slask
 slask = decode[ifhead+3]+slask
@@ -84,8 +86,6 @@ ghost = decode[ifhead+28]+ghost
 slask = decode[ifhead+29]+slask
 slask = decode[ifhead+30]+slask
 slask = decode[ifhead+31]+slask
-
-ghost = decode[ifhead+32]+ghost
 
 
 foo = int(slask, 2)
