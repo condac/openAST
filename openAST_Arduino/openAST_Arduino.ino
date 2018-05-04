@@ -24,11 +24,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
- 
+
 char timerstop = 0b01010000;
 char timerstart = 0b01010001;
 
-boolean sendStatus = false;
+boolean sendStatus = false; // Set to true if you have status messages 1-7 that you know work
 
 // 2351957
 // ....................pre1  pre2  d1    d2    d3    d4    d5    d6    d7    d8    d9    d10
@@ -41,12 +41,21 @@ char Status5[12]   = { 0xF9, 0x16, 0x36, 0x55, 0x57, 0x09, 0xFB, 0x3F, 0x91, 0x2
 char Status6[12]   = { 0xF9, 0x16, 0x0E, 0xFE, 0xF0, 0x8A, 0x22, 0x3C, 0x52, 0x1B, 0x3F, 0xF3 };
 char Status7[12]   = { 0xF9, 0x16, 0xD7, 0xA8, 0x10, 0x77, 0xD1, 0x23, 0xA2, 0xD7, 0xC3, 0x3C };
 
+//Status messages for custom numbers. Not sure if these work or just makes things worse. To use set sendStatus to true a few lines up
+//char Status1[12]   = { 0xF9, 0x16, 0x03, 0xBC, 0x00, 0xC0, 0x3C, 0xFF, 0x40, 0x00, 0xC0, 0x3C };
+//char Status2[12]   = { 0xF9, 0x16, 0x00, 0x03, 0xBC, 0x00, 0xC0, 0x3F, 0x40, 0xFC, 0xC0, 0x3C };
+//char Status3[12]   = { 0xF9, 0x16, 0x03, 0xBF, 0xBC, 0xC0, 0xFC, 0xC3, 0xBC, 0xFC, 0xC0, 0x3C };
+//char Status4[12]   = { 0xF9, 0x16, 0x00, 0x00, 0x03, 0xBC, 0x00, 0xC3, 0x80, 0xFC, 0x3C, 0x3C };
+//char Status5[12]   = { 0xF9, 0x16, 0x03, 0xBC, 0x03, 0x7C, 0x3C, 0x3F, 0x7C, 0xFC, 0x3C, 0x3C };
+//char Status6[12]   = { 0xF9, 0x16, 0x00, 0x03, 0xBF, 0xBC, 0xC0, 0xFF, 0x7C, 0x00, 0x3C, 0x3C };
+//char Status7[12]   = { 0xF9, 0x16, 0x03, 0xBF, 0xBF, 0x7C, 0xFC, 0x03, 0x80, 0x00, 0x3C, 0x3C };
+
 
 void setup() {
   pinMode(0,OUTPUT);
   pinMode(1,OUTPUT);
   pinMode(2,OUTPUT);
-  
+
   TCCR1 = 0b01010001;  // set COM1A0 PWM1A CS10  COM1A0 tells the timer to Toggle the value on OC1A pins (page 89 attiny25 datasheet)
 			//                       CS10 set timer prescale to 1
 			 //            PWM1A enable pwm output
@@ -71,40 +80,40 @@ void loop() {
   digitalWrite(2,LOW);
   while (true) { // this while is not needed
     messages();
-    
+
     if (sendStatus) {
 
       sendData(Status1);
       delayMicroseconds(2000+random(1000));
       messages();
-    
+
       sendData(Status2);
       delayMicroseconds(2000+random(1000));
       messages();
-    
+
       sendData(Status3);
       delayMicroseconds(2000+random(1000));
       messages();
-    
+
       sendData(Status4);
       delayMicroseconds(2000+random(1000));
       messages();
-    
+
       sendData(Status5);
       delayMicroseconds(2000+random(1000));
       messages();
-    
+
       sendData(Status6);
       delayMicroseconds(2000+random(1000));
       messages();
-    
+
       sendData(Status7);
       delayMicroseconds(2000+random(1000));
     }
   }
-  
-  
-  
+
+
+
   //delay(100);
 }
 
@@ -119,68 +128,68 @@ void sendByte(char inData) {
   if( (inData & (1 << 7)) ) {
     TCCR1 = timerstop;
   }
-  TCCR1 = timerstart; //  
+  TCCR1 = timerstart; //
   cycle_delay();
 
   if( (inData & (1 << 6)) ) {
     TCCR1 = timerstop;
   }
-  TCCR1 = timerstart; //  
+  TCCR1 = timerstart; //
   cycle_delay();
 
-  
+
   if( (inData & (1 << 5)) ) {
     TCCR1 = timerstop;
   }
-  TCCR1 = timerstart; //  
+  TCCR1 = timerstart; //
   cycle_delay();
 
-  
+
   if( (inData & (1 << 4)) ) {
     TCCR1 = timerstop;
   }
-  TCCR1 = timerstart; //  
+  TCCR1 = timerstart; //
   cycle_delay();
 
-  
+
   if( (inData & (1 << 3)) ) {
     TCCR1 = timerstop;
   }
-  TCCR1 = timerstart; //  
+  TCCR1 = timerstart; //
   cycle_delay();
 
-  
+
   if( (inData & (1 << 2)) ) {
     TCCR1 = timerstop;
   }
-  TCCR1 = timerstart; 
+  TCCR1 = timerstart;
   cycle_delay();
 
-  
+
   if( (inData & (1 << 1)) ) {
     TCCR1 = timerstop;
   }
-  TCCR1 = timerstart; 
+  TCCR1 = timerstart;
   cycle_delay();
 
-  
+
   if( (inData & (1 << 0)) ) {
     TCCR1 = timerstop;
   }
-  TCCR1 = timerstart; 
+  TCCR1 = timerstart;
   cycle_delay();
 
   // TODO: look if the last delay is to long with the return calls
- 
+
 }
 void sendData(char dataArray[]) {
   digitalWrite(2,HIGH); // stop led while sending data
-  
+
   TCCR1 = timerstart;
 
 
   noInterrupts();
-  
+
   sendByte(0x00);
   sendByte(dataArray[0]);
   sendByte(dataArray[1]);
@@ -194,16 +203,15 @@ void sendData(char dataArray[]) {
   sendByte(dataArray[9]);
   sendByte(dataArray[10]);
   sendByte(dataArray[11]);
-  
+
   TCCR1 = timerstop; //out  TCCR1,timerstop // Shut down radio
                      //ldi  slask, 0b0100_0000 // set COM1A0 (bit4) to 0 to disconnect timer pins
   TCCR1 = 0b01000000;//out  TCCR1,slask
   interrupts();
 
-  
-  
+
+
   digitalWrite(0,LOW);//cbi  PORTB, 0  // set both output to 0 to avoid current drain
   digitalWrite(1,LOW);//cbi  PORTB, 1  // set both output to 0 to avoid current drain
-  
-}
 
+}
