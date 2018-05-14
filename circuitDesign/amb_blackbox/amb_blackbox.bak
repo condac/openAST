@@ -107,10 +107,10 @@ F 3 "~" H 3000 3300 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L TRANSFO-AUDIO FT-50A-J1
+L TRANSFO-AUDIO FT-50A-J
 U 1 1 55487B5E
 P 4200 3650
-F 0 "FT-50A-J1" H 4200 4110 70  0000 C CNN
+F 0 "FT-50A-J" H 4200 4110 70  0000 C CNN
 F 1 "5:9" H 4210 4020 70  0000 C CNN
 F 2 "~" H 4200 3650 60  0000 C CNN
 F 3 "~" H 4200 3650 60  0000 C CNN
@@ -218,4 +218,6 @@ Text Notes 7600 4000 0    60   ~ 0
 Kabel på banan
 Text Notes 7250 3750 1    60   ~ 0
 30cm
+Text Notes 1200 3550 0    60   ~ 0
+Koax kontakt till motagaren
 $EndSCHEMATC
