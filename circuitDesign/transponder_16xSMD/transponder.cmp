@@ -1,0 +1,94 @@
+Cmp-Mod V01 Created by CvPcb (2013-may-18)-stable date = Tue 05 May 2015 03:48:09 PM CEST
+
+BeginCmp
+TimeStamp = /5541F242;
+Reference = C1;
+ValeurCmp = 22pF;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /55489FB1;
+Reference = C2;
+ValeurCmp = 1nF;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5541F251;
+Reference = C3;
+ValeurCmp = 22pF;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /55489ECF;
+Reference = C4;
+ValeurCmp = 50uF;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5541F321;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED-0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5541F045;
+Reference = D2;
+ValeurCmp = ZENER;
+IdModule  = SM2010;
+EndCmp
+
+BeginCmp
+TimeStamp = /5548AC1F;
+Reference = D3;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5541EFDB;
+Reference = IC1;
+ValeurCmp = ATTINY85-P;
+IdModule  = SO8_200mil_wide;
+EndCmp
+
+BeginCmp
+TimeStamp = /5548A706;
+Reference = P1;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /55489F9C;
+Reference = R1;
+ValeurCmp = 220;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5541F330;
+Reference = R2;
+ValeurCmp = 1k;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5541F0E5;
+Reference = R3;
+ValeurCmp = 75;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5541F22A;
+Reference = X1;
+ValeurCmp = CRYSTAL;
+IdModule  = CRYSTAL-NX5032GA;
+EndCmp
+
+EndListe

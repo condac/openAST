@@ -1,0 +1,36 @@
+Title,
+Revision,
+Date,5 may 2015
+Generated,Fri 25 May 2018 10:14:18 AM CEST
+Company,
+Comment 1,
+Comment 2,
+Comment 3,
+Comment 4,
+Total Parts,26
+Total Unique Parts,15
+
+
+
+Ref,Qty,Value,Footprint,Datasheet,
+C1 C3 C5 C7 ,4,22pF,Capacitors_SMD:C_0805,
+C2 C6 ,2,1nF,Capacitors_SMD:C_0805,
+C4 C8 ,2,50uF,Capacitors_Tantalum_SMD:CP_Tantalum_Case-A_EIA-3216-18_Reflow,
+D1 D2 ,2,LED,LEDs:LED_0805,
+D3 D4 ,2,DIODE,Diodes_SMD:D_0805,
+IC1 ,1,ATTINY85-P,Housings_DIP:DIP-8_W7.62mm_Socket,
+IC2 ,1,ATTINY85-P,Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm,
+J1 ,1,Conn_01x02,Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm,
+J2 ,1,Conn_01x03,Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm,
+P1 P2 ,2,CONN_2,Connectors:PINHEAD1-2,
+R1 R3 ,2,220,Resistors_SMD:R_0805,
+R2 R4 ,2,1k,Resistors_SMD:R_0805,
+U1 U2 ,2,L78L05_SOT89,TO_SOT_Packages_SMD:SOT-89-3,
+X1 ,1,CRYSTAL,Crystals:Crystal_HC49-4H_Vertical,
+X2 ,1,CRYSTAL,Crystals:Crystal_SMD_5032-2pin_5.0x3.2mm,
+
+
+
+
+BOM made with KICAD_BOM_WIZARD (https://github.com/HashDefineElectronics/KiCad_BOM_Wizard.git)
+Generated Fri 25 May 2018 10:14:18 AM CEST
