@@ -17,6 +17,63 @@ def hexString(instring,offset) :
     out = "0x"+format(value, '02X')
 
     return out
+
+def XOR(in1, in2, in3, in4, in5):
+    out = ""
+
+    for i in range(8):
+        test = int(in1[i]) + int(in2[i]) + int(in3[i]) + int(in4[i]) + int(in5[i])
+
+        if (test % 2 == 0) :
+            out = out+"0"
+        else :
+            out = out+"1"
+
+    return out
+
+
+
+def encodeOpenPT() :
+    print("Encoding openPT")
+    number = int(args.number)
+    encode = get_bin(number,32) #Convert to binary string 24bit long
+    encode2 = ""
+    for i in range ( len ( encode ) ): # Reverse bit order
+        encode2 = encode[i]+encode2
+
+    preamble =  ""
+    header = "10101000"
+
+    tail = XOR(header, encode2[0:8], encode2[8:16], encode2[16:24], encode2[24:32])
+
+    encodeIn = preamble+header+encode2+tail
+    print(encodeIn)
+    # Create 10 01 11 00 bit pairs
+    prevBit = False
+    encodeOut = ""
+    for i in range ( len ( encodeIn ) ):
+        if (prevBit) :
+            if (encodeIn[i] == "0"):
+                encodeOut = encodeOut+"11"
+                prevBit = False
+            else :
+                encodeOut = encodeOut+"01"
+                prevBit = True
+        else :
+            if (encodeIn[i] == "0"):
+                encodeOut = encodeOut+"00"
+                prevBit = False
+            else :
+                encodeOut = encodeOut+"10"
+                prevBit = True
+    print(encodeOut)
+    print("                  { " +hexString(encodeOut,1), hexString(encodeOut,2),
+                                            hexString(encodeOut,3), hexString(encodeOut,4),
+                                            hexString(encodeOut,5), hexString(encodeOut,6),
+                                            hexString(encodeOut,7), hexString(encodeOut,8),
+                                            hexString(encodeOut,9), hexString(encodeOut,10),
+                                            hexString(encodeOut,11), hexString(encodeOut,12)+ " }", sep=', ')
+
 def encodeNumber() :
     number = int(args.number)
     if (args.status_nr == None):
@@ -198,3 +255,4 @@ if (args.hex != None) :
 if (args.number != None) :
     print("Encoding number")
     encodeNumber()
+    encodeOpenPT()

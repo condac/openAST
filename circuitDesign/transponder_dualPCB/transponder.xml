@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/bro/privateworkplace/openAST/circuitDesign/transponder_dualPCB/transponder.sch</source>
+    <date>Fri 25 May 2018 10:14:18 AM CEST</date>
+    <tool>Eeschema 4.0.7</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date>5 may 2015</date>
+        <source>transponder.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="IC1">
+      <value>ATTINY85-P</value>
+      <footprint>Housings_DIP:DIP-8_W7.62mm_Socket</footprint>
+      <libsource lib="transponder-cache" part="ATTINY85-P"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5541EFDB</tstamp>
+    </comp>
+    <comp ref="X1">
+      <value>CRYSTAL</value>
+      <footprint>Crystals:Crystal_HC49-4H_Vertical</footprint>
+      <libsource lib="transponder-cache" part="CRYSTAL"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5541F22A</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>22pF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <libsource lib="transponder-rescue" part="C-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5541F242</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>22pF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <libsource lib="transponder-rescue" part="C-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5541F251</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>LED</value>
+      <footprint>LEDs:LED_0805</footprint>
+      <libsource lib="transponder-rescue" part="LED-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5541F321</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>1k</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="transponder-rescue" part="R-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5541F330</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>50uF</value>
+      <footprint>Capacitors_Tantalum_SMD:CP_Tantalum_Case-A_EIA-3216-18_Reflow</footprint>
+      <libsource lib="transponder-rescue" part="C-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55489ECF</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>220</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="transponder-rescue" part="R-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55489F9C</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>1nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <libsource lib="transponder-rescue" part="C-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55489FB1</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>CONN_2</value>
+      <footprint>Connectors:PINHEAD1-2</footprint>
+      <libsource lib="transponder-cache" part="CONN_2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5548A706</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>DIODE</value>
+      <footprint>Diodes_SMD:D_0805</footprint>
+      <libsource lib="transponder-cache" part="DIODE"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5548AC1F</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>L78L05_SOT89</value>
+      <footprint>TO_SOT_Packages_SMD:SOT-89-3</footprint>
+      <libsource lib="regul" part="L78L05_SOT89"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06B644</tstamp>
+    </comp>
+    <comp ref="IC2">
+      <value>ATTINY85-P</value>
+      <footprint>Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm</footprint>
+      <libsource lib="transponder-cache" part="ATTINY85-P"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06A875</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>50uF</value>
+      <footprint>Capacitors_Tantalum_SMD:CP_Tantalum_Case-A_EIA-3216-18_Reflow</footprint>
+      <libsource lib="transponder-rescue" part="C-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06A98B</tstamp>
+    </comp>
+    <comp ref="P2">
+      <value>CONN_2</value>
+      <footprint>Connectors:PINHEAD1-2</footprint>
+      <libsource lib="transponder-cache" part="CONN_2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06AA43</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>DIODE</value>
+      <footprint>Diodes_SMD:D_0805</footprint>
+      <libsource lib="transponder-cache" part="DIODE"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06AAF6</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>L78L05_SOT89</value>
+      <footprint>TO_SOT_Packages_SMD:SOT-89-3</footprint>
+      <libsource lib="regul" part="L78L05_SOT89"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06AB94</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>LEDs:LED_0805</footprint>
+      <libsource lib="transponder-rescue" part="LED-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06AC6F</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>1k</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="transponder-rescue" part="R-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06AD0D</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>1nF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <libsource lib="transponder-rescue" part="C-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06ADF0</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>220</value>
+      <footprint>Resistors_SMD:R_0805</footprint>
+      <libsource lib="transponder-rescue" part="R-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06AEE6</tstamp>
+    </comp>
+    <comp ref="X2">
+      <value>CRYSTAL</value>
+      <footprint>Crystals:Crystal_SMD_5032-2pin_5.0x3.2mm</footprint>
+      <libsource lib="transponder-cache" part="CRYSTAL"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06D463</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>22pF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <libsource lib="transponder-rescue" part="C-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06D523</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>22pF</value>
+      <footprint>Capacitors_SMD:C_0805</footprint>
+      <libsource lib="transponder-rescue" part="C-RESCUE-transponder"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B06D5DE</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_01x02</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm</footprint>
+      <libsource lib="conn" part="Conn_01x02"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B071CC2</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>Conn_01x03</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm</footprint>
+      <libsource lib="conn" part="Conn_01x03"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B071D81</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="transponder-cache" part="ATTINY25-P">
+      <aliases>
+        <alias>ATTINY45-P</alias>
+        <alias>ATTINY85-P</alias>
+      </aliases>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">ATTINY25-P</field>
+        <field name="Footprint">DIP8</field>
+      </fields>
+      <pins>
+        <pin num="1" name="PB5(~RESET~/dW/ADC0/PCINT5)" type="BiDi"/>
+        <pin num="2" name="PB3(XTAL1/CLKI/OC1B/ADC3/PCINT3)" type="BiDi"/>
+        <pin num="3" name="PB4(XTAL2/CLKO/OC1B/ADC2/PCINT4)" type="BiDi"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="PB0(MOSI/DI/SDA/AIN0/OC0A/OC1A/AREF/PCINT0)" type="BiDi"/>
+        <pin num="6" name="PB1(MISO/DO/AIN1/OC0B/OC1A/PCINT1)" type="BiDi"/>
+        <pin num="7" name="PB2(SCK/USCK/SCL/T0/INT0/ADC1/PCINT2)" type="BiDi"/>
+        <pin num="8" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="transponder-rescue" part="C-RESCUE-transponder">
+      <footprints>
+        <fp>SM*</fp>
+        <fp>C?</fp>
+        <fp>C1-1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C-RESCUE-transponder</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="transponder-cache" part="CONN_2">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="PM" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="transponder-cache" part="CRYSTAL">
+      <fields>
+        <field name="Reference">X</field>
+        <field name="Value">CRYSTAL</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="Conn_01x02">
+      <description>Generic connector, single row, 01x02</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_??x*mm*</fp>
+        <fp>Connector*:*1x??x*mm*</fp>
+        <fp>Pin?Header?Straight?1X*</fp>
+        <fp>Pin?Header?Angled?1X*</fp>
+        <fp>Socket?Strip?Straight?1X*</fp>
+        <fp>Socket?Strip?Angled?1X*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="Conn_01x03">
+      <description>Generic connector, single row, 01x03</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_??x*mm*</fp>
+        <fp>Connector*:*1x??x*mm*</fp>
+        <fp>Pin?Header?Straight?1X*</fp>
+        <fp>Pin?Header?Angled?1X*</fp>
+        <fp>Socket?Strip?Straight?1X*</fp>
+        <fp>Socket?Strip?Angled?1X*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x03</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="transponder-cache" part="DIODE">
+      <footprints>
+        <fp>D?</fp>
+        <fp>S*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">DIODE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="transponder-rescue" part="LED-RESCUE-transponder">
+      <footprints>
+        <fp>LED-3MM</fp>
+        <fp>LED-5MM</fp>
+        <fp>LED-10MM</fp>
+        <fp>LED-0603</fp>
+        <fp>LED-0805</fp>
+        <fp>LED-1206</fp>
+        <fp>LEDV</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED-RESCUE-transponder</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="regul" part="MC78L05_SOT89">
+      <aliases>
+        <alias>MC78L08_SOT89</alias>
+        <alias>MC78L12_SOT89</alias>
+        <alias>L78L33_SOT89</alias>
+        <alias>L78L05_SOT89</alias>
+        <alias>L78L06_SOT89</alias>
+        <alias>L78L08_SOT89</alias>
+        <alias>L78L09_SOT89</alias>
+        <alias>L78L10_SOT89</alias>
+        <alias>L78L12_SOT89</alias>
+        <alias>L78L15_SOT89</alias>
+        <alias>L78L18_SOT89</alias>
+        <alias>L78L24_SOT89</alias>
+      </aliases>
+      <description>Positive 100mA 30V Linear Regulator, Fixed Output 5V, SOT-89</description>
+      <docs>http://www.fairchildsemi.com/ds/LM/LM78L05A.pdf</docs>
+      <footprints>
+        <fp>SOT?89*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MC78L05_SOT89</field>
+        <field name="Footprint">TO_SOT_Packages_SMD:SOT89-3_Housing</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OUT" type="power_out"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="IN" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="transponder-rescue" part="R-RESCUE-transponder">
+      <footprints>
+        <fp>R?</fp>
+        <fp>SM0603</fp>
+        <fp>SM0805</fp>
+        <fp>R?-*</fp>
+        <fp>SM1206</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R-RESCUE-transponder</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="transponder-rescue">
+      <uri>/home/bro/privateworkplace/openAST/circuitDesign/transponder_dualPCB/transponder-rescue.lib</uri>
+    </library>
+    <library logical="conn">
+      <uri>/usr/share/kicad/library/conn.lib</uri>
+    </library>
+    <library logical="transponder-cache">
+      <uri>/home/bro/privateworkplace/openAST/circuitDesign/transponder_dualPCB/transponder-cache.lib</uri>
+    </library>
+    <library logical="regul">
+      <uri>/usr/share/kicad/library/regul.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(C8-Pad1)">
+      <node ref="U2" pin="1"/>
+      <node ref="IC2" pin="8"/>
+      <node ref="C8" pin="1"/>
+      <node ref="D2" pin="2"/>
+    </net>
+    <net code="2" name="Net-(IC2-Pad7)">
+      <node ref="J2" pin="1"/>
+      <node ref="IC2" pin="7"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="3" name="Net-(C7-Pad1)">
+      <node ref="IC2" pin="3"/>
+      <node ref="C7" pin="1"/>
+      <node ref="X2" pin="2"/>
+    </net>
+    <net code="4" name="GND">
+      <node ref="C5" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="U1" pin="2"/>
+      <node ref="IC1" pin="4"/>
+      <node ref="C1" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="IC2" pin="4"/>
+      <node ref="C7" pin="2"/>
+      <node ref="P1" pin="2"/>
+      <node ref="U2" pin="2"/>
+      <node ref="P2" pin="2"/>
+      <node ref="C8" pin="2"/>
+    </net>
+    <net code="5" name="Net-(D4-Pad2)">
+      <node ref="D4" pin="2"/>
+      <node ref="P2" pin="1"/>
+    </net>
+    <net code="6" name="Net-(D4-Pad1)">
+      <node ref="D4" pin="1"/>
+      <node ref="U2" pin="3"/>
+    </net>
+    <net code="7" name="Net-(D2-Pad1)">
+      <node ref="D2" pin="1"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="8" name="Net-(C6-Pad1)">
+      <node ref="IC2" pin="5"/>
+      <node ref="R3" pin="1"/>
+      <node ref="J2" pin="3"/>
+      <node ref="C6" pin="2"/>
+      <node ref="C6" pin="1"/>
+    </net>
+    <net code="9" name="Net-(IC2-Pad1)">
+      <node ref="IC2" pin="1"/>
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="10" name="Net-(C5-Pad1)">
+      <node ref="X2" pin="1"/>
+      <node ref="IC2" pin="2"/>
+      <node ref="C5" pin="1"/>
+      <node ref="J1" pin="2"/>
+    </net>
+    <net code="11" name="Net-(IC2-Pad6)">
+      <node ref="IC2" pin="6"/>
+      <node ref="R3" pin="2"/>
+      <node ref="J2" pin="2"/>
+    </net>
+    <net code="12" name="Net-(IC1-Pad7)">
+      <node ref="IC1" pin="7"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="13" name="Net-(D1-Pad1)">
+      <node ref="D1" pin="1"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="14" name="Net-(C2-Pad1)">
+      <node ref="R1" pin="1"/>
+      <node ref="C2" pin="1"/>
+      <node ref="IC1" pin="5"/>
+      <node ref="C2" pin="2"/>
+    </net>
+    <net code="15" name="Net-(IC1-Pad6)">
+      <node ref="R1" pin="2"/>
+      <node ref="IC1" pin="6"/>
+    </net>
+    <net code="16" name="Net-(C1-Pad1)">
+      <node ref="IC1" pin="2"/>
+      <node ref="X1" pin="1"/>
+      <node ref="C1" pin="1"/>
+    </net>
+    <net code="17" name="Net-(C3-Pad1)">
+      <node ref="X1" pin="2"/>
+      <node ref="C3" pin="1"/>
+      <node ref="IC1" pin="3"/>
+    </net>
+    <net code="18" name="Net-(D3-Pad2)">
+      <node ref="P1" pin="1"/>
+      <node ref="D3" pin="2"/>
+    </net>
+    <net code="19" name="Net-(D3-Pad1)">
+      <node ref="D3" pin="1"/>
+      <node ref="U1" pin="3"/>
+    </net>
+    <net code="20" name="Net-(C4-Pad1)">
+      <node ref="C4" pin="1"/>
+      <node ref="IC1" pin="8"/>
+      <node ref="D1" pin="2"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="21" name="Net-(IC1-Pad1)">
+      <node ref="IC1" pin="1"/>
+    </net>
+  </nets>
+</export>

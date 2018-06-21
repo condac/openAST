@@ -1,0 +1,313 @@
+EESchema Schematic File Version 2
+LIBS:transponder-rescue
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:transponder-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date "5 may 2015"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ATTINY85-P IC2
+U 1 1 5B06A875
+P 5200 4800
+F 0 "IC2" H 4050 5200 40  0000 C CNN
+F 1 "ATTINY85-P" H 6200 4400 40  0000 C CNN
+F 2 "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 6200 4800 35  0000 C CIN
+F 3 "~" H 5200 4800 60  0000 C CNN
+	1    5200 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L C-RESCUE-transponder C8
+U 1 1 5B06A98B
+P 7150 4800
+F 0 "C8" H 7150 4900 40  0000 L CNN
+F 1 "50uF" H 7156 4715 40  0000 L CNN
+F 2 "Capacitors_Tantalum_SMD:CP_Tantalum_Case-A_EIA-3216-18_Reflow" H 7188 4650 30  0000 C CNN
+F 3 "~" H 7150 4800 60  0000 C CNN
+	1    7150 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_2 P2
+U 1 1 5B06AA43
+P 8400 4950
+F 0 "P2" V 8350 4950 40  0000 C CNN
+F 1 "CONN_2" V 8450 4950 40  0000 C CNN
+F 2 "Connectors:PINHEAD1-2" H 8400 4950 60  0000 C CNN
+F 3 "~" H 8400 4950 60  0000 C CNN
+	1    8400 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D4
+U 1 1 5B06AAF6
+P 7850 4300
+F 0 "D4" H 7850 4400 40  0000 C CNN
+F 1 "DIODE" H 7850 4200 40  0000 C CNN
+F 2 "Diodes_SMD:D_0805" H 7850 4300 60  0000 C CNN
+F 3 "~" H 7850 4300 60  0000 C CNN
+	1    7850 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L L78L05_SOT89 U2
+U 1 1 5B06AB94
+P 7200 4300
+F 0 "U2" H 7050 4425 50  0000 C CNN
+F 1 "L78L05_SOT89" H 7175 4425 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-89-3" H 7200 4500 50  0001 C CIN
+F 3 "" H 7200 4250 50  0001 C CNN
+	1    7200 4300
+	-1   0    0    1   
+$EndComp
+$Comp
+L LED-RESCUE-transponder D2
+U 1 1 5B06AC6F
+P 4450 4050
+F 0 "D2" H 4450 4150 50  0000 C CNN
+F 1 "LED" H 4450 3950 50  0000 C CNN
+F 2 "LEDs:LED_0805" H 4450 4050 60  0000 C CNN
+F 3 "~" H 4450 4050 60  0000 C CNN
+	1    4450 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L R-RESCUE-transponder R4
+U 1 1 5B06AD0D
+P 3900 4050
+F 0 "R4" V 3980 4050 40  0000 C CNN
+F 1 "1k" V 3907 4051 40  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 3830 4050 30  0000 C CNN
+F 3 "~" H 3900 4050 30  0000 C CNN
+	1    3900 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L C-RESCUE-transponder C6
+U 1 1 5B06ADF0
+P 2800 4350
+F 0 "C6" H 2800 4450 40  0000 L CNN
+F 1 "1nF" H 2806 4265 40  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 2838 4200 30  0000 C CNN
+F 3 "~" H 2800 4350 60  0000 C CNN
+	1    2800 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L R-RESCUE-transponder R3
+U 1 1 5B06AEE6
+P 3150 4600
+F 0 "R3" V 3230 4600 40  0000 C CNN
+F 1 "220" V 3157 4601 40  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 3080 4600 30  0000 C CNN
+F 3 "~" H 3150 4600 30  0000 C CNN
+	1    3150 4600
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8050 4300 8050 4850
+Wire Wire Line
+	7650 4300 7500 4300
+Wire Wire Line
+	7200 4000 8850 4000
+Wire Wire Line
+	8850 4000 8850 5300
+Wire Wire Line
+	8850 5300 8050 5300
+Wire Wire Line
+	8050 5300 8050 5050
+Wire Wire Line
+	8050 5050 6550 5050
+Wire Wire Line
+	7150 5000 7150 6050
+Connection ~ 7150 5050
+Wire Wire Line
+	7150 4600 6900 4600
+Wire Wire Line
+	6900 4600 6900 4300
+Wire Wire Line
+	6550 4550 6900 4550
+Connection ~ 6900 4550
+Wire Wire Line
+	4650 4050 6650 4050
+Wire Wire Line
+	6650 4050 6650 4550
+Connection ~ 6650 4550
+Wire Wire Line
+	3850 4750 3650 4750
+Wire Wire Line
+	3650 4050 3650 5600
+Wire Wire Line
+	3850 4650 3400 4650
+Wire Wire Line
+	3400 4650 3400 4600
+Wire Wire Line
+	1650 4600 2900 4600
+Wire Wire Line
+	2800 4600 2800 4550
+Wire Wire Line
+	2200 4150 3850 4150
+Wire Wire Line
+	3850 4150 3850 4550
+$Comp
+L CRYSTAL X2
+U 1 1 5B06D463
+P 2700 5050
+F 0 "X2" H 2700 5200 60  0000 C CNN
+F 1 "CRYSTAL" H 2700 4900 60  0000 C CNN
+F 2 "Crystals:Crystal_SMD_5032-2pin_5.0x3.2mm" H 2700 5050 60  0000 C CNN
+F 3 "~" H 2700 5050 60  0000 C CNN
+	1    2700 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L C-RESCUE-transponder C7
+U 1 1 5B06D523
+P 3000 5450
+F 0 "C7" H 3000 5550 40  0000 L CNN
+F 1 "22pF" H 3006 5365 40  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 3038 5300 30  0000 C CNN
+F 3 "~" H 3000 5450 60  0000 C CNN
+	1    3000 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L C-RESCUE-transponder C5
+U 1 1 5B06D5DE
+P 2400 5450
+F 0 "C5" H 2400 5550 40  0000 L CNN
+F 1 "22pF" H 2406 5365 40  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 2438 5300 30  0000 C CNN
+F 3 "~" H 2400 5450 60  0000 C CNN
+	1    2400 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND-RESCUE-transponder #PWR03
+U 1 1 5B06D69C
+P 3450 6150
+F 0 "#PWR03" H 3450 6150 30  0001 C CNN
+F 1 "GND" H 3450 6080 30  0001 C CNN
+F 2 "" H 3450 6150 60  0000 C CNN
+F 3 "" H 3450 6150 60  0000 C CNN
+	1    3450 6150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 4850 2400 4850
+Connection ~ 2400 5050
+Wire Wire Line
+	2400 5650 2400 5800
+Wire Wire Line
+	2400 5800 3450 5800
+Wire Wire Line
+	3000 5650 3000 5800
+Connection ~ 3000 5800
+Wire Wire Line
+	3000 4950 3000 5250
+Wire Wire Line
+	3000 4950 3850 4950
+Connection ~ 3000 5050
+Wire Wire Line
+	4150 4050 4250 4050
+Wire Wire Line
+	3850 4550 3550 4550
+Wire Wire Line
+	3550 4550 3550 5800
+Wire Wire Line
+	3550 5800 4300 5800
+Wire Wire Line
+	2400 4850 2400 5250
+Wire Wire Line
+	3850 5250 3850 5050
+Connection ~ 3800 4850
+Wire Wire Line
+	4300 5700 3600 5700
+Wire Wire Line
+	3600 5700 3600 4650
+Connection ~ 3600 4650
+Wire Wire Line
+	3650 5600 4300 5600
+Connection ~ 3650 4750
+$Comp
+L Conn_01x02 J1
+U 1 1 5B071CC2
+P 4100 5250
+F 0 "J1" H 4100 5350 50  0000 C CNN
+F 1 "Conn_01x02" H 4100 5050 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 4100 5250 50  0001 C CNN
+F 3 "" H 4100 5250 50  0001 C CNN
+	1    4100 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Conn_01x03 J2
+U 1 1 5B071D81
+P 4500 5700
+F 0 "J2" H 4500 5900 50  0000 C CNN
+F 1 "Conn_01x03" H 4500 5500 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 4500 5700 50  0001 C CNN
+F 3 "" H 4500 5700 50  0001 C CNN
+	1    4500 5700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 5350 3800 5350
+Connection ~ 3800 5350
+Wire Wire Line
+	3900 5250 3850 5250
+Wire Wire Line
+	3800 5350 3800 4850
+Wire Wire Line
+	7150 6050 3450 6050
+Wire Wire Line
+	3450 5800 3450 6150
+Connection ~ 3450 6050
+Wire Wire Line
+	2200 4150 2200 3900
+Wire Wire Line
+	2200 3900 1650 3900
+Wire Wire Line
+	1650 3900 1650 4600
+Connection ~ 2800 4600
+Connection ~ 2800 4150
+$EndSCHEMATC

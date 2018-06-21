@@ -29,13 +29,14 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:amb_blackbox-cache
 EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "5 may 2015"
+Date "14 may 2018"
 Rev ""
 Comp ""
 Comment1 ""
@@ -44,10 +45,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L CONN_2 Kontakt1
+L CONN_2 Connector
 U 1 1 55487760
 P 6700 3650
-F 0 "Kontakt1" V 6650 3650 40  0000 C CNN
+F 0 "Connector" V 6650 3650 40  0000 C CNN
 F 1 "CONN_2" V 6750 3650 40  0000 C CNN
 F 2 "~" H 6700 3650 60  0000 C CNN
 F 3 "~" H 6700 3650 60  0000 C CNN
@@ -77,7 +78,9 @@ F 3 "" H 2550 4100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2350 3850 2750 3850
+	2350 3850 2550 3850
+Wire Wire Line
+	2550 3850 2750 3850
 Wire Wire Line
 	2550 3850 2550 4100
 Wire Wire Line
@@ -94,7 +97,9 @@ F 3 "~" H 3000 4050 30  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3000 3500 3000 3800
+	3000 3500 3000 3650
+Wire Wire Line
+	3000 3650 3000 3800
 $Comp
 L C C1
 U 1 1 5548784F
@@ -118,9 +123,9 @@ F 3 "~" H 4200 3650 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 4500 3650 0    60   ~ 0
-9 Varv på antennsidan
+9 Turns on antenna side
 Text Label 3700 3650 0    60   ~ 0
-5 Varv
+5 Turns
 Connection ~ 3000 3650
 Wire Wire Line
 	3000 3100 3800 3100
@@ -129,7 +134,9 @@ Wire Wire Line
 Wire Wire Line
 	3800 4300 3800 3850
 Wire Wire Line
-	2750 4300 3800 4300
+	2750 4300 3000 4300
+Wire Wire Line
+	3000 4300 3800 4300
 Wire Wire Line
 	2750 3850 2750 4300
 Connection ~ 2550 3850
@@ -156,27 +163,12 @@ F 3 "~" H 5200 3900 60  0000 C CNN
 	1    5200 3900
 	0    -1   -1   0   
 $EndComp
-$Comp
-L R R2
-U 1 1 55487E43
-P 5900 3650
-F 0 "R2" V 5980 3650 40  0000 C CNN
-F 1 "100k" V 5907 3651 40  0000 C CNN
-F 2 "~" V 5830 3650 30  0000 C CNN
-F 3 "~" H 5900 3650 30  0000 C CNN
-	1    5900 3650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	6350 3400 6350 3550
+	5400 3900 5900 3900
 Wire Wire Line
-	5400 3400 6350 3400
-Wire Wire Line
-	5400 3900 6350 3900
+	5900 3900 6350 3900
 Wire Wire Line
 	6350 3900 6350 3750
-Connection ~ 5900 3400
-Connection ~ 5900 3900
 Wire Wire Line
 	5000 3900 4600 3900
 Wire Wire Line
@@ -215,9 +207,15 @@ Wire Notes Line
 Wire Notes Line
 	8700 4600 8700 2600
 Text Notes 7600 4000 0    60   ~ 0
-Kabel på banan
+Antenna on track
 Text Notes 7250 3750 1    60   ~ 0
-30cm
+45cm
 Text Notes 1200 3550 0    60   ~ 0
-Koax kontakt till motagaren
+Coax connector
+Wire Wire Line
+	6350 3400 6350 3550
+Wire Wire Line
+	5400 3400 5900 3400
+Wire Wire Line
+	5900 3400 6350 3400
 $EndSCHEMATC
