@@ -1,3 +1,13 @@
+NEW! Arduino code
+=================
+
+I strongly recomend switching to the arduino based code. All future changes will be made here. It is much more easy to work with now that I have managed to get the critical timings right to send a correct signal. 
+
+To add support for attiny in Arduino follow this guide https://create.arduino.cc/projecthub/arjun/programming-attiny85-with-arduino-uno-afb829
+
+Do note that if you try to program your attiny mounted in the transponder you need to desolder the resistor on the antenna loop or the device will not respond correctly ( giving wrong board id errors and not responding well at all etc...) And you still need to supply the chip with an own oscilator source because it do not like to use the 20mhz crystal in programming mode for some reason.
+
+
 openAST
 =======
 
