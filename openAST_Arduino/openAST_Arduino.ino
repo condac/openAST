@@ -55,6 +55,9 @@ char Status7[12]   = { 0xF9, 0x16, 0x03, 0xBF, 0xBF, 0x7C, 0xFC, 0x03, 0x80, 0x0
 boolean ledStatus;
 int ledCounter;
 
+#define DELAY 1000
+#define DELAY_RANDOM 1000
+
 void setup() {
   pinMode(0,OUTPUT);
   pinMode(1,OUTPUT);
@@ -72,11 +75,11 @@ void setup() {
 
 void messages() {
   sendData(idMessage);
-  delayMicroseconds(2000+random(1000));
+  delayMicroseconds(DELAY+random(DELAY_RANDOM));
   sendData(idMessage);
-  delayMicroseconds(2000+random(1000));
+  delayMicroseconds(DELAY+random(DELAY_RANDOM));
   sendData(idMessage);
-  delayMicroseconds(2000+random(1000));
+  delayMicroseconds(DELAY+random(DELAY_RANDOM));
 }
 
 void loop() {
@@ -93,31 +96,31 @@ void loop() {
     if (sendStatus) {
 
       sendData(Status1);
-      delayMicroseconds(2000+random(1000));
+      delayMicroseconds(DELAY+random(DELAY_RANDOM));
       messages();
 
       sendData(Status2);
-      delayMicroseconds(2000+random(1000));
+      delayMicroseconds(DELAY+random(DELAY_RANDOM));
       messages();
 
       sendData(Status3);
-      delayMicroseconds(2000+random(1000));
+      delayMicroseconds(DELAY+random(DELAY_RANDOM));
       messages();
 
       sendData(Status4);
-      delayMicroseconds(2000+random(1000));
+      delayMicroseconds(DELAY+random(DELAY_RANDOM));
       messages();
 
       sendData(Status5);
-      delayMicroseconds(2000+random(1000));
+      delayMicroseconds(DELAY+random(DELAY_RANDOM));
       messages();
 
       sendData(Status6);
-      delayMicroseconds(2000+random(1000));
+      delayMicroseconds(DELAY+random(DELAY_RANDOM));
       messages();
 
       sendData(Status7);
-      delayMicroseconds(2000+random(1000));
+      delayMicroseconds(DELAY+random(DELAY_RANDOM));
     }
   }
 
