@@ -201,11 +201,19 @@ void sendByte(char inData) {
 void sendData(char dataArray[]) {
   digitalWrite(2,HIGH); // stop led while sending data
 
+  noInterrupts();
+  OCR1A = 0x02;
+  OCR1C = 0x03;
+  // reset Timer/Counter prescaler
+  GTCCR |= (1 << PSR1);
+  // Zero (Reset) Timer1 8-bit up counter value
+  TCNT1 = 0;
   TCCR1 = timerstart;
 cycle_delay();
 cycle_delay();
+cycle_delay();
+cycle_delay();
 
-  noInterrupts();
 
   sendByte(0x00);
   
