@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
 
-char timerstop = 0b01010000;
-char timerstart = 0b01010001;
+char timerstop = 0b10010000;
+char timerstart = 0b10010001;
 
 boolean sendStatus = false; // Set to true if you have status messages 1-7 that you know work
 
@@ -42,7 +42,7 @@ boolean sendStatus = false; // Set to true if you have status messages 1-7 that 
 //char Status7[12]   = { 0xF9, 0x16, 0xD7, 0xA8, 0x10, 0x77, 0xD1, 0x23, 0xA2, 0xD7, 0xC3, 0x3C };
 
 //Status messages for custom numbers. Not sure if these work or just makes things worse. To use set sendStatus to true a few lines up
-char idMessage[12] = { 0xF9, 0x16, 0x35, 0xDF, 0xDB, 0x12, 0xF1, 0x16, 0xC3, 0xEC, 0xF3, 0x30 }; // custom number
+char idMessage[12] = { 0xF9, 0x16, 0x3B, 0x2F, 0x02, 0xC3, 0x22, 0xDA, 0xDB, 0xEC, 0x0C, 0xF3 }; // custom number
 //char idMessage[12] = { 0xF9, 0x16, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}; // testmönster
 char Status1[12]   = { 0xF9, 0x16, 0x03, 0xBC, 0x00, 0xC0, 0x3C, 0xFF, 0x40, 0x00, 0xC0, 0x3C };
 char Status2[12]   = { 0xF9, 0x16, 0x00, 0x03, 0xBC, 0x00, 0xC0, 0x3F, 0x40, 0xFC, 0xC0, 0x3C };
@@ -63,13 +63,20 @@ void setup() {
   pinMode(1,OUTPUT);
   pinMode(2,OUTPUT);
 
-  TCCR1 = 0b01010001;  // set COM1A0 PWM1A CS10  COM1A0 tells the timer to Toggle the value on OC1A pins (page 89 attiny25 datasheet)
+  TCCR1 = 0b10010001;  // set COM1A0 PWM1A CS10  COM1A0 tells the timer to Toggle the value on OC1A pins (page 89 attiny25 datasheet)
 			//                       CS10 set timer prescale to 1
 			 //            PWM1A enable pwm output
 			// The timer needs to count to 255 before it starts to reset after 4 counts instead, don't know why
-  OCR1A = 0x02;
-  OCR1C = 0x03;
+  //OCR1A = 0x02;
+  OCR1C = 0x01;
 
+  //TCCR1A = 0;
+  //TCCR1 = 0;
+  //TCNT1  = 0;
+  //OCR1A = 3;   // toggle after counting to 4
+  //TCCR1 |= (1 << COM1A0);   // Toggle OC1A on Compare Match.
+  //TCCR1 |= (1 << WGM01);    // CTC mode
+  //TCCR1 |= (1 << CS10);     // clock on, no pre-scaler
 
 }
 
@@ -202,8 +209,8 @@ void sendData(char dataArray[]) {
   digitalWrite(2,HIGH); // stop led while sending data
 
   noInterrupts();
-  OCR1A = 0x02;
-  OCR1C = 0x03;
+  //OCR1A = 0x02;
+  //OCR1C = 0x03;
   // reset Timer/Counter prescaler
   GTCCR |= (1 << PSR1);
   // Zero (Reset) Timer1 8-bit up counter value
@@ -213,10 +220,12 @@ cycle_delay();
 cycle_delay();
 cycle_delay();
 cycle_delay();
-
+  
 
   sendByte(0x00);
-  
+  asm("nop");
+    asm("nop");
+    asm("nop");
  /* sendByte(dataArray[0]);
   sendByte(dataArray[1]);
   sendByte(dataArray[2]);
@@ -238,13 +247,21 @@ cycle_delay();
   while(dataCounter<=11) {
     if( (inData & (1 << 7)) ) {
       TCCR1 = timerstop;
+      //TCNT1 = 0x01;
+      //TIFR |= (1 << TOV1); 
     }
     asm("nop");
     TCCR1 = timerstart; //
     cycle_delay();
   
     if( (inData & (1 << 6)) ) {
-      TCCR1 = timerstop;
+      //TCCR1 = timerstop;
+      if (TCNT1) {
+        asm("nop");
+        asm("nop");
+        TCNT1 = 0;
+      }
+      //TIFR |= (1 << TOV1); 
     }
     asm("nop");
     TCCR1 = timerstart; //
@@ -253,6 +270,8 @@ cycle_delay();
   
     if( (inData & (1 << 5)) ) {
       TCCR1 = timerstop;
+      //TCNT1 = 0x02;
+      //TIFR |= (1 << TOV1); 
     }
     asm("nop");
     TCCR1 = timerstart; //
@@ -261,6 +280,8 @@ cycle_delay();
   
     if( (inData & (1 << 4)) ) {
       TCCR1 = timerstop;
+      //TCNT1 = 0x02;
+      //TIFR |= (1 << TOV1); 
     }
     asm("nop");
     TCCR1 = timerstart; //
@@ -269,6 +290,8 @@ cycle_delay();
   
     if( (inData & (1 << 3)) ) {
       TCCR1 = timerstop;
+      //TCNT1 = 0x02;
+      //TIFR |= (1 << TOV1); 
     }
     asm("nop");
     TCCR1 = timerstart; //
@@ -277,6 +300,8 @@ cycle_delay();
   
     if( (inData & (1 << 2)) ) {
       TCCR1 = timerstop;
+      //TCNT1 = 0x02;
+      //TIFR |= (1 << TOV1); 
     }
     asm("nop");
     TCCR1 = timerstart;
@@ -285,6 +310,8 @@ cycle_delay();
   
     if( (inData & (1 << 1)) ) {
       TCCR1 = timerstop;
+      //TCNT1 = 0x02;
+      //TIFR |= (1 << TOV1); 
     }
     asm("nop");
     TCCR1 = timerstart;
@@ -293,6 +320,8 @@ cycle_delay();
   
     if( (inData & (1 << 0)) ) {
       TCCR1 = timerstop;
+      //TCNT1 = 0x02;
+      //TIFR |= (1 << TOV1); 
     }
     asm("nop");
     TCCR1 = timerstart;
